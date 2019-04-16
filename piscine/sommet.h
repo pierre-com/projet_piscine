@@ -9,10 +9,13 @@ public:
     ~Sommet();
     double getm_x();
     double getm_y();
+    double getm_x();
+    double getm_y();
+    std::string getm_id();
 
 private:
     std::string m_id; //identifiant
-    double m_x, m_y; //coordonnés
+    double m_x, m_y; //coordonnÃ©s
 
 
 };
