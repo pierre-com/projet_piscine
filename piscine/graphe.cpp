@@ -1,4 +1,5 @@
 #include "graphe.h"
+#include "svgfile.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -6,7 +7,7 @@
 
 Graphe::Graphe(std::string nomFichier)
 {
-  std::ifstream ifs{nomFichier};
+    std::ifstream ifs{nomFichier};
     if (!ifs)
         throw std::runtime_error( "Impossible d'ouvrir en lecture " + nomFichier );
 
@@ -46,7 +47,7 @@ Graphe::Graphe(std::string nomFichier)
         //on lit le nom de l'arete
         ifs>>id_arete;
         if(ifs.fail())
-          throw std::runtime_error("Probleme lecture nom de l'arete");
+            throw std::runtime_error("Probleme lecture nom de l'arete");
         //lecture des ids des deux extrémités
         ifs>>sommet1;
         if(ifs.fail())
@@ -55,37 +56,32 @@ Graphe::Graphe(std::string nomFichier)
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture du sommet d'arriver");
         //on crée l'arete avec son nom, et ses coordonnées
-        m_aretes.insert({new Arete{id_arete,sommet1 ,sommet2 ,poid1,poid2}});
-
-
-
+        m_aretes.insert({new Arete{id_arete,sommet1,sommet2,poid1,poid2}});
     }
-
-
-ifs.close();
+    ifs.close();
 }
 
 void Graphe::ponderation(std::string nomFichier_ponderation)
 {
-std::ifstream ifs{nomFichier_ponderation};
-if (!ifs)
-{
-  throw std::runtime_error( "Impossible d'ouvrir en lecture11 " + nomFichier_ponderation );
-}
-int nb_aretes;
-ifs >> nb_aretes;
-if ( ifs.fail() )
-{
-  throw std::runtime_error("Probleme lecture nb aretes");
-}
-int nb_poids;//nombre de sommets du graphe
-ifs >> nb_poids;
-if ( ifs.fail() )
-{
-  throw std::runtime_error("Probleme lecture poids");
-}
-std::string id_arete2;//identifiant arete
-float poids1,poids2;// poids arete
+    std::ifstream ifs{nomFichier_ponderation};
+    if (!ifs)
+    {
+        throw std::runtime_error( "Impossible d'ouvrir en lecture " + nomFichier_ponderation );
+    }
+    int nb_aretes;
+    ifs >> nb_aretes;
+    if ( ifs.fail() )
+    {
+        throw std::runtime_error("Probleme lecture nb aretes");
+    }
+    int nb_poids;//nombre de sommets du graphe
+    ifs >> nb_poids;
+    if ( ifs.fail() )
+    {
+        throw std::runtime_error("Probleme lecture poids");
+    }
+    std::string id_arete2;//identifiant arete
+    float poids1,poids2;// poids arete
     for (int i=0; i<nb_aretes; ++i)
     {
         ifs>>id_arete2; //lit le identifiant de l'arete
@@ -99,10 +95,34 @@ float poids1,poids2;// poids arete
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture donnÈes arete");
         ///si aucun soucis on insert
-        m_aretes.insert({new Arete{id_arete2,"0" ,"0" ,poids1,poids2}});
+        m_aretes.insert({new Arete{id_arete2,"0","0",poids1,poids2}});
 
     }
 }
 
+void Graphe::affichage(Svgfile *ecran)
+{
+    for (const auto& elem : m_sommets)
+        //permettre d'afficher les données des sommets
+    {
 
-Graphe::~Graphe(){}
+        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 30, "greenball");
+
+        //ecran->addText(300, 300, "25;12", "black");
+    }
+
+}
+
+/*void Graphe::affichage_graphe_1 ()
+{
+    ///prs des doubles pour pouvoir
+    Svgfile svgout;
+    svgout.addDisk(100, 100, 90, "greyball");
+    svgout.addText(300, 300, "25;12", "blue");
+
+
+}*/
+
+
+
+Graphe::~Graphe() {}

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="800">
 
-<circle cx="100" cy="100" r="90" fill="url(#redball)" />
-<text x="300" y="300" fill="black" >25;12</text>
+<circle cx="100" cy="200" r="30" fill="url(#greenball)" />
+<circle cx="200" cy="100" r="30" fill="url(#greenball)" />
+<circle cx="200" cy="200" r="30" fill="url(#greenball)" />
+<circle cx="100" cy="100" r="30" fill="url(#greenball)" />
   
 
 <defs>
