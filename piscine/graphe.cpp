@@ -99,17 +99,17 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
 
     }
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
-        for (const auto& elem1 : m_aretes_poids)
+    for (auto& elem1 : m_aretes_poids)
+    {
+        for ( auto & elem2 : m_aretes)
         {
-            for (const auto & elem2 : m_aretes)
-            {
-             if(elem1->getm_id_arete()==elem2->getm_id_arete())
-             {
-               elem2->setPoids1(elem1->getPoids1());
-               elem2->setPoids2(elem1->getPoids2());
-             } 
-            }
+         if(elem1->getm_id_arete()==elem2->getm_id_arete())
+         {
+           elem2->setPoids1(elem1->getPoids1());
+           elem2->setPoids2(elem1->getPoids2());
+         } 
         }
+    }
 }
 
 void Graphe::affichage(Svgfile *ecran)
