@@ -95,9 +95,21 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture donnÈes arete");
         ///si aucun soucis on insert
-        m_aretes.insert({new Arete{id_arete2,"0","0",poids1,poids2}});
+        m_aretes_poids.insert({new Arete{id_arete2,"0","0",poids1,poids2}});
 
     }
+    ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
+        for (const auto& elem1 : m_aretes_poids)
+        {
+            for (const auto & elem2 : m_aretes)
+            {
+             if(elem1->getm_id_arete()==elem2->getm_id_arete())
+             {
+               elem2->setPoids1(elem1->getPoids1());
+               elem2->setPoids2(elem1->getPoids2());
+             } 
+            }
+        }
 }
 
 void Graphe::affichage(Svgfile *ecran)
