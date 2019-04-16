@@ -21,14 +21,14 @@ Graphe::Graphe(std::string nomFichier)
     {
         ifs>>id; //lit le identifiant du sommet
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes sommet");
+            throw std::runtime_error("Probleme lecture donnÃˆes sommet");
         //lit la posotion du sommet
         ifs>>x;
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes sommet");
+            throw std::runtime_error("Probleme lecture donnÃˆes sommet");
         ifs>>y;
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes sommet");
+            throw std::runtime_error("Probleme lecture donnÃˆes sommet");
         ///si aucun soucis on insert
         m_sommets.insert({id,new Sommet{id,x,y}});
     }
@@ -48,14 +48,14 @@ Graphe::Graphe(std::string nomFichier)
         ifs>>id_arete;
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture nom de l'arete");
-        //lecture des ids des deux extrémités
+        //lecture des ids des deux extrÃ©mitÃ©s
         ifs>>sommet1;
         if(ifs.fail())
             throw std::runtime_error("Probleme lecteur du sommet de depart");
         ifs>>sommet2;
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture du sommet d'arriver");
-        //on crée l'arete avec son nom, et ses coordonnées
+        //on crÃ©e l'arete avec son nom, et ses coordonnÃ©es
         m_aretes.insert({new Arete{id_arete,sommet1,sommet2,poid1,poid2}});
     }
     ifs.close();
@@ -86,14 +86,14 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     {
         ifs>>id_arete2; //lit le identifiant de l'arete
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes arete");
+            throw std::runtime_error("Probleme lecture donnÃˆes arete");
         //lit la posotion de arete
         ifs>>poids1;
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes arete");
+            throw std::runtime_error("Probleme lecture donnÃˆes arete");
         ifs>>poids2;
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture donnÈes arete");
+            throw std::runtime_error("Probleme lecture donnÃˆes arete");
         ///si aucun soucis on insert
         m_aretes.insert({new Arete{id_arete2,"0","0",poids1,poids2}});
 
@@ -103,7 +103,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
 void Graphe::affichage(Svgfile *ecran)
 {
     for (const auto& elem : m_sommets)
-        //permettre d'afficher les données des sommets
+        //permettre d'afficher les donnÃ©es des sommets
     {
 
         ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 30, "greenball");
@@ -113,15 +113,44 @@ void Graphe::affichage(Svgfile *ecran)
 
 }
 
-/*void Graphe::affichage_graphe_1 ()
+void Graphe::affichage(Svgfile *ecran)
 {
-    ///prs des doubles pour pouvoir
-    Svgfile svgout;
-    svgout.addDisk(100, 100, 90, "greyball");
-    svgout.addText(300, 300, "25;12", "blue");
+  
+  double x1, x2, y1, y2;
+  for (const auto& elem1 : m_aretes)
+  //affiche les aretes entre le sommets
+  {
+    //elem->getm_id_arete;
+    for (const auto& elem2 : m_sommets)
+    {
+      if (elem1->getm_sommet_x()==elem2.second->getm_id())
+      {
+        //on recup les coord du sommet1
+        x1=elem2.second->getm_x();
+        y1=elem2.second->getm_y();
+      }
+      if (elem1->getm_sommet_y()==elem2.second->getm_id())
+      {
+        //on recup les coord du sommet2
+        x2=elem2.second->getm_x();
+        y2=elem2.second->getm_y();
+      }
 
-
-}*/
+    }
+    
+    ecran->addLine(x1,y1,x2,y2, "black");
+    //ecran->addText(300, 300, "25;12", "black");
+  }
+  for (const auto& elem : m_sommets)
+   //permettre d'afficher les donnÃ©es des sommets
+  {
+    
+  ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
+  
+    
+  }
+  
+}
 
 
 
