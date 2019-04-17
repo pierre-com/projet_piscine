@@ -6,8 +6,8 @@
 int main()
 {
   Svgfile svgout;
-  Graphe a("broadway.txt");
-  a.ponderation("broadway_weights_0.txt");
+  Graphe a("cubetown.txt");
+  a.ponderation("cubetown_weights_0.txt");
   a.affichage(&svgout);
   return 0;
 }

@@ -5,6 +5,8 @@
 #include <vector>
 #include <unordered_map>
 #include "arete.h"
+#include <string>
+#include <stdio.h>
 
 Graphe::Graphe(std::string nomFichier)
 {
@@ -115,57 +117,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     }
 }
 
-/*void Graphe::affichage(Svgfile *ecran)
-{
-    for (const auto& elem : m_sommets)
-        //permettre d'afficher les données des sommets
-    {
 
-        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 30, "greenball");
-
-        //ecran->addText(300, 300, "25;12", "black");
-    }
-
-}*/
-
-/*void Graphe::affichage(Svgfile *ecran)
-{
-
-  double x1, x2, y1, y2;
-  for (const auto& elem1 : m_aretes)
-  //affiche les aretes entre le sommets
-  {
-    //elem->getm_id_arete;
-    for (const auto& elem2 : m_sommets)
-    {
-      if (elem1->getm_sommet_x()==elem2.second->getm_id())
-      {
-        //on recup les coord du sommet1
-        x1=elem2.second->getm_x();
-        y1=elem2.second->getm_y();
-      }
-      if (elem1->getm_sommet_y()==elem2.second->getm_id())
-      {
-        //on recup les coord du sommet2
-        x2=elem2.second->getm_x();
-        y2=elem2.second->getm_y();
-      }
-
-    }
-
-    ecran->addLine(x1,y1,x2,y2, "black");
-    //ecran->addText(300, 300, "25;12", "black");
-  }
-  for (const auto& elem : m_sommets)
-   //permettre d'afficher les données des sommets
-  {
-
-  ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
-
-
-  }
-
-}*/
 void Graphe::affichage(Svgfile *ecran)
 {
     for (const auto& elem : m_sommets)
@@ -200,12 +152,17 @@ void Graphe::affichage(Svgfile *ecran)
         ecran->addLine(x1,y1,x2,y2, "black");
         double x_moy=(x1+x2)/2;
         double y_moy =(y1+y2)/2;
-        //float poids_tot = elem1.getPoids1(), elem1.getPoids2();
-        /*----------------reprendre ici-----------------*/
-        for (const auto& elem3: m_aretes_poids)
-        {
-            ecran->addText(x_moy,y_moy,elem3->getPoids1(), "red");
-        }
+        float p2;
+        float p1;
+        std::string poids_double;
+        p1=elem1->getPoids1();
+        p2=elem1->getPoids2();
+
+        ///affichage à l'écran
+        ecran->addText(x_moy-10,y_moy, p1, "red");
+        ecran->addText(x_moy,y_moy, ";", "red");
+        ecran->addText(x_moy+10,y_moy, p2, "red");
+
 
     }
     for (const auto& elem : m_sommets)

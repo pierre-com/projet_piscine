@@ -26,11 +26,11 @@ std::string Arete::getm_sommet_y()
 
 void Arete::setPoids1(float Poids1)
 {
-    Poids1=Poids1;
+    m_poids1=Poids1;
 }
 void Arete::setPoids2(float Poids2)
 {
-    Poids2=Poids2;
+    m_poids2=Poids2;
 }
 
 

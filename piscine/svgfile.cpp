@@ -103,8 +103,24 @@ void Svgfile::addText(double x, double y, double val, std::string color)
 {
     std::ostringstream oss;
     oss << val;
+
     addText(x, y, oss.str(), color);
 }
+
+void Svgfile::addText(double x, double y, double val, std::string text, double val2, std::string color)
+{
+     std::ostringstream oss;
+     std::ostringstream oss2;
+     oss << val;
+     oss2 <<val2;
+
+    m_ostrm << "<text "
+            << attrib("x", x)
+            << attrib("y", y)
+            << attrib("fill", color)
+            << ">" << text << "</text>\n";
+}
+
 
 void Svgfile::addGrid(double span, bool numbering, std::string color)
 {
