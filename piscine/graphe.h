@@ -17,7 +17,8 @@ class Graphe
   void ponderation(std::string nomFichier_ponderation);
   void kruskal(std::string start);
   void kruskal();
-  void affichage(Svgfile *ecran);
+
+  //void affichage(Svgfile *ecran);
   ~Graphe();
 
   private:

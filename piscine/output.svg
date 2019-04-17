@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="800">
 
-<circle cx="100" cy="200" r="30" fill="url(#greenball)" />
-<circle cx="200" cy="100" r="30" fill="url(#greenball)" />
-<circle cx="200" cy="200" r="30" fill="url(#greenball)" />
-<circle cx="100" cy="100" r="30" fill="url(#greenball)" />
+<circle cx="100" cy="200" r="15" fill="url(#greenball)" />
+<circle cx="200" cy="100" r="15" fill="url(#greenball)" />
+<circle cx="200" cy="200" r="15" fill="url(#greenball)" />
+<circle cx="100" cy="100" r="15" fill="url(#greenball)" />
+<line x1="100" y1="200" x2="200" y2="200" stroke="black" />
+<text x="150" y="200" fill="red" >8</text>
+<text x="150" y="200" fill="red" >2</text>
+<text x="150" y="200" fill="red" >6</text>
+<text x="150" y="200" fill="red" >3</text>
+<text x="150" y="200" fill="red" >8</text>
+<line x1="100" y1="100" x2="200" y2="100" stroke="black" />
+<text x="150" y="100" fill="red" >8</text>
+<text x="150" y="100" fill="red" >2</text>
+<text x="150" y="100" fill="red" >6</text>
+<text x="150" y="100" fill="red" >3</text>
+<text x="150" y="100" fill="red" >8</text>
+<line x1="100" y1="100" x2="100" y2="200" stroke="black" />
+<text x="100" y="150" fill="red" >8</text>
+<text x="100" y="150" fill="red" >2</text>
+<text x="100" y="150" fill="red" >6</text>
+<text x="100" y="150" fill="red" >3</text>
+<text x="100" y="150" fill="red" >8</text>
+<line x1="200" y1="100" x2="100" y2="200" stroke="black" />
+<text x="150" y="150" fill="red" >8</text>
+<text x="150" y="150" fill="red" >2</text>
+<text x="150" y="150" fill="red" >6</text>
+<text x="150" y="150" fill="red" >3</text>
+<text x="150" y="150" fill="red" >8</text>
+<line x1="200" y1="100" x2="200" y2="200" stroke="black" />
+<text x="200" y="150" fill="red" >8</text>
+<text x="200" y="150" fill="red" >2</text>
+<text x="200" y="150" fill="red" >6</text>
+<text x="200" y="150" fill="red" >3</text>
+<text x="200" y="150" fill="red" >8</text>
+<circle cx="100" cy="200" r="20" fill="url(#greenball)" />
+<circle cx="200" cy="100" r="20" fill="url(#greenball)" />
+<circle cx="200" cy="200" r="20" fill="url(#greenball)" />
+<circle cx="100" cy="100" r="20" fill="url(#greenball)" />
   
 
 <defs>

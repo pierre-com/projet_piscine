@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <unordered_map>
+#include "arete.h"
 
 Graphe::Graphe(std::string nomFichier)
 {
@@ -99,20 +100,22 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
 
     }
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
-    for (auto& elem1 : m_aretes_poids)
+    ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
+    float poidsArete[2];
+   for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
         {
-         if(elem1->getm_id_arete()==elem2->getm_id_arete())
-         {
-           elem2->setPoids1(elem1->getPoids1());
-           elem2->setPoids2(elem1->getPoids2());
-         } 
+            if(elem1->getm_id_arete()==elem2->getm_id_arete())
+            {
+                elem2->setPoids1(elem1->getPoids1());
+                elem2->setPoids2(elem1->getPoids2());
+            }
         }
     }
 }
 
-void Graphe::affichage(Svgfile *ecran)
+/*void Graphe::affichage(Svgfile *ecran)
 {
     for (const auto& elem : m_sommets)
         //permettre d'afficher les données des sommets
@@ -123,11 +126,11 @@ void Graphe::affichage(Svgfile *ecran)
         //ecran->addText(300, 300, "25;12", "black");
     }
 
-}
+}*/
 
-void Graphe::affichage(Svgfile *ecran)
+/*void Graphe::affichage(Svgfile *ecran)
 {
-  
+
   double x1, x2, y1, y2;
   for (const auto& elem1 : m_aretes)
   //affiche les aretes entre le sommets
@@ -149,21 +152,71 @@ void Graphe::affichage(Svgfile *ecran)
       }
 
     }
-    
+
     ecran->addLine(x1,y1,x2,y2, "black");
     //ecran->addText(300, 300, "25;12", "black");
   }
   for (const auto& elem : m_sommets)
    //permettre d'afficher les données des sommets
   {
-    
-  ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
-  
-    
-  }
-  
-}
 
+  ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
+
+
+  }
+
+}*/
+void Graphe::affichage(Svgfile *ecran)
+{
+    for (const auto& elem : m_sommets)
+        //permettre d'afficher les données des sommets
+    {
+
+        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 15, "greenball");
+
+
+    }
+    double x1, x2, y1, y2;
+    for (const auto& elem1 : m_aretes)
+        //affiche les aretes entre le sommets
+    {
+        //elem->getm_id_arete;
+        for (const auto& elem2 : m_sommets)
+        {
+            if (elem1->getm_sommet_x()==elem2.second->getm_id())
+            {
+                //on recup les coord du sommet1
+                x1=elem2.second->getm_x();
+                y1=elem2.second->getm_y();
+            }
+            if (elem1->getm_sommet_y()==elem2.second->getm_id())
+            {
+                //on recup les coord du sommet2
+                x2=elem2.second->getm_x();
+                y2=elem2.second->getm_y();
+            }
+        }
+
+        ecran->addLine(x1,y1,x2,y2, "black");
+        double x_moy=(x1+x2)/2;
+        double y_moy =(y1+y2)/2;
+        //float poids_tot = elem1.getPoids1(), elem1.getPoids2();
+        /*----------------reprendre ici-----------------*/
+        for (const auto& elem3: m_aretes_poids)
+        {
+            ecran->addText(x_moy,y_moy,elem3->getPoids1(), "red");
+        }
+
+    }
+    for (const auto& elem : m_sommets)
+        //permettre d'afficher les données des sommets
+    {
+
+        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
+
+    }
+
+}
 
 
 Graphe::~Graphe() {}

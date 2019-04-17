@@ -13,14 +13,27 @@ float Arete::getPoids2()
 }
 std::string Arete::getm_id_arete()
 {
-  return m_id_arete;
+    return m_id_arete;
 }
 std::string Arete::getm_sommet_x()
 {
-return m_sommet_x;
+    return m_sommet_x;
 }
 std::string Arete::getm_sommet_y()
 {
-return m_sommet_y;
+    return m_sommet_y;
 }
+
+void Arete::setPoids1(float Poids1)
+{
+    Poids1=Poids1;
+}
+void Arete::setPoids2(float Poids2)
+{
+    Poids2=Poids2;
+}
+
+
+
+
 Arete::~Arete() {}
