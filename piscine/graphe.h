@@ -23,7 +23,7 @@ class Graphe
 
   private:
   std::unordered_set< Arete*> m_aretes;
-  std::unordered_map<std::string,Sommet*> m_sommets;
+  std::unordered_map<int,Sommet*> m_sommets;
   std::unordered_set<Arete*> m_aretes_poids;
 };
 #endif

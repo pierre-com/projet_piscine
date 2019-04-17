@@ -18,7 +18,7 @@ Graphe::Graphe(std::string nomFichier)
     ifs >> ordre;
     if ( ifs.fail() )
         throw std::runtime_error("Probleme lecture ordre du graphe");
-    std::string id;//identifiant sommet
+    int id;//identifiant sommet
     double x,y;// position
     for (int i=0; i<ordre; ++i)
     {
@@ -41,9 +41,9 @@ Graphe::Graphe(std::string nomFichier)
     if ( ifs.fail() )
         throw std::runtime_error("Probleme lecture taille du graphe");
     //lecture des aretes
-    std::string id_arete;
-    std::string sommet1;
-    std::string sommet2;
+    int id_arete;
+    int sommet1;
+    int sommet2;
     float poid1=1,poid2=1;
     for (int i=0; i<taille; ++i)
     {
@@ -83,7 +83,8 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     {
         throw std::runtime_error("Probleme lecture poids");
     }
-    std::string id_arete2;//identifiant arete
+
+    int id_arete2;//identifiant arete
     float poids1,poids2;// poids arete
     for (int i=0; i<nb_aretes; ++i)
     {
@@ -98,12 +99,11 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture donnÈes arete");
         ///si aucun soucis on insert
-        m_aretes_poids.insert({new Arete{id_arete2,"0","0",poids1,poids2}});
+        m_aretes_poids.insert({new Arete{id_arete2,0,0,poids1,poids2}});
 
     }
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
     ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
-   // float poidsArete[2];
    for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
@@ -154,7 +154,6 @@ void Graphe::affichage(Svgfile *ecran)
         double y_moy =(y1+y2)/2;
         float p2;
         float p1;
-        std::string poids_double;
         p1=elem1->getPoids1();
         p2=elem1->getPoids2();
 

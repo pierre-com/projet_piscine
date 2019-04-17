@@ -5,16 +5,14 @@
 class Sommet
 {
 public:
-    Sommet(std::string id,double x, double y);
+    Sommet(int id,double x, double y);
     ~Sommet();
     double getm_x();
     double getm_y();
-    //double getm_x();
-    //double getm_y();
-    std::string getm_id();
+    int getm_id();
 
 private:
-    std::string m_id; //identifiant
+    int m_id; //identifiant
     double m_x, m_y; //coordonnés
 
 
