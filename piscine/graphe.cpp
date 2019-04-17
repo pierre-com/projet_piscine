@@ -101,7 +101,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     }
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
     ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
-    float poidsArete[2];
+   // float poidsArete[2];
    for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
