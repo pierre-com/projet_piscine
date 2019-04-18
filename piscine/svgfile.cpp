@@ -107,12 +107,14 @@ void Svgfile::addText(double x, double y, double val, std::string color)
     addText(x, y, oss.str(), color);
 }
 
-void Svgfile::addText(double x, double y, double val, std::string text, double val2, std::string color)
+void Svgfile::addText(double x, double y, double val,std::string text, double val2, std::string color)
 {
      std::ostringstream oss;
-     std::ostringstream oss2;
+     //std::ostringstream oss2;
+     std::ostringstream oss3;
      oss << val;
-     oss2 <<val2;
+     //oss2 << ";";
+     oss3 <<val2;
 
     m_ostrm << "<text "
             << attrib("x", x)

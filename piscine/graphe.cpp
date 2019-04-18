@@ -104,7 +104,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     }
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
     ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
-   for (auto& elem1 : m_aretes_poids)
+    for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
         {
@@ -124,7 +124,7 @@ void Graphe::affichage(Svgfile *ecran)
         //permettre d'afficher les données des sommets
     {
 
-        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 15, "greenball");
+        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 10, "greenball");
 
 
     }
@@ -150,17 +150,22 @@ void Graphe::affichage(Svgfile *ecran)
         }
 
         ecran->addLine(x1,y1,x2,y2, "black");
-        double x_moy=(x1+x2)/2;
+        double x_moy=(x1+x2)/2-20;
         double y_moy =(y1+y2)/2;
         float p2;
         float p1;
+        std::string p1_next;
+        std::string p2_next;
         p1=elem1->getPoids1();
+        //std::cout<<std::setprecision(2)<<p1<<std::endl;
         p2=elem1->getPoids2();
-
+        //std::cout<<std::setprecision(2)<<p2<<std::endl;
+        p1_next = std::to_string(p1);
+        p1_next=p1_next.substr(0,3);
+        p2_next = std::to_string(p2);
+        p2_next= p2_next.substr(0,3);
         ///affichage à l'écran
-        ecran->addText(x_moy-10,y_moy, p1, "red");
-        ecran->addText(x_moy,y_moy, ";", "red");
-        ecran->addText(x_moy+10,y_moy, p2, "red");
+        ecran->addText(x_moy,y_moy,p1_next+";"+p2_next,"red");
 
 
     }
@@ -168,11 +173,12 @@ void Graphe::affichage(Svgfile *ecran)
         //permettre d'afficher les données des sommets
     {
 
-        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
+        ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 15, "greenball");
 
     }
 
 }
+
 
 
 Graphe::~Graphe() {}
