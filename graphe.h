@@ -17,12 +17,13 @@ class Graphe
   void ponderation(std::string nomFichier_ponderation);
   void kruskal(std::string start);
   void kruskal();
-  void affichage(Svgfile *ecran);
+    void pareto();
+  //void affichage(Svgfile *ecran);
   ~Graphe();
 
   private:
   std::unordered_set< Arete*> m_aretes;
-  std::unordered_map<std::string,Sommet*> m_sommets;
+  std::unordered_map<int,Sommet*> m_sommets;
   std::unordered_set<Arete*> m_aretes_poids;
 };
 #endif
