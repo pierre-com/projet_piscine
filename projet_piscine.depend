@@ -7,7 +7,7 @@
 	<iostream>
 	<vector>
 
-1555523365 source:c:\users\admin\desktop\projet_piscine\piscine\graphe.cpp
+1555609836 source:c:\users\admin\desktop\projet_piscine\piscine\graphe.cpp
 	"graphe.h"
 	"svgfile.h"
 	<iostream>
@@ -17,8 +17,9 @@
 	"arete.h"
 	<string>
 	<stdio.h>
+	<tgmath.h>
 
-1555518824 c:\users\admin\desktop\projet_piscine\piscine\graphe.h
+1555606796 c:\users\admin\desktop\projet_piscine\piscine\graphe.h
 	"sommet.h"
 	"arete.h"
 	<string>
@@ -29,11 +30,12 @@
 1555509914 c:\users\admin\desktop\projet_piscine\piscine\sommet.h
 	<string>
 
-1555503920 source:c:\users\admin\desktop\projet_piscine\piscine\main.cpp
+1555657280 source:c:\users\admin\desktop\projet_piscine\piscine\main.cpp
 	<iostream>
 	"svgfile.h"
 	"graphe.h"
 	<string>
+	"menu.h"
 
 1555517211 c:\users\admin\desktop\projet_piscine\piscine\svgfile.h
 	<string>
@@ -47,4 +49,13 @@
 	"svgfile.h"
 	<iostream>
 	<sstream>
+
+1555663570 source:c:\users\admin\desktop\projet_piscine\piscine\menu.cpp
+	"menu.h"
+	<iostream>
+	"svgfile.h"
+	"graphe.h"
+	<string>
+
+1555596741 c:\users\admin\desktop\projet_piscine\piscine\menu.h
 

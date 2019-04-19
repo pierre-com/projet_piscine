@@ -17,7 +17,7 @@ class Graphe
   void ponderation(std::string nomFichier_ponderation);
   void kruskal(std::string start);
   void kruskal();
-
+    void pareto();
   //void affichage(Svgfile *ecran);
   ~Graphe();
 
