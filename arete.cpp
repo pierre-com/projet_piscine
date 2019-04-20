@@ -1,6 +1,7 @@
 #include "arete.h"
 #include <iostream>
 
+
 Arete::Arete(int id_arete, int sommet_x, int sommet_y, float poids0,float poids1) {
 
 m_id_arete=id_arete;
@@ -23,6 +24,7 @@ float Arete::getPoids(int choix)
 float Arete::getPoids2()
 {
     return m_poids2;
+
 }*/
 
 int Arete::getm_id_arete()
@@ -40,6 +42,7 @@ int Arete::getm_sommet_y()
     return m_sommet_y;
 }
 
+
 void Arete::setPoids(float Poids,int choix)
 {
     m_poids[choix]=Poids;
@@ -53,6 +56,7 @@ void Arete::setPoids(float Poids,int choix)
 void Arete::setPoids2(float Poids2)
 {
     m_poids2=Poids2;
+
 }*/
 
 bool Arete::getMark()

@@ -7,5 +7,4 @@ int interface_principale();
 int choix_kruskal();
 
 
-
 #endif // MENU_H_INCLUDED

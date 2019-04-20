@@ -1,4 +1,4 @@
-#include "graphe.h"
+﻿#include "graphe.h"
 #include "svgfile.h"
 #include <iostream>
 #include <fstream>
@@ -7,6 +7,7 @@
 #include <string>
 #include <stdio.h>
 #include <tgmath.h>
+
 
 void Graphe::pareto()
 {
@@ -71,7 +72,6 @@ void Graphe::pareto()
     std::cout<<" FINI";
 
 }
-
 
 Graphe::Graphe(std::string nomFichier)
 {
@@ -148,6 +148,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     {
         throw std::runtime_error("Probleme lecture poids");
     }
+
     int id_arete2;//identifiant arete
     float poids1,poids2;// poids arete
     for (int i=0; i<nb_aretes; ++i)
@@ -169,6 +170,7 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
     ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
     // float poidsArete[2];
+
     for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
@@ -182,8 +184,10 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     }
 }
 
+
 void Graphe::affichage(Svgfile *ecran)
 {
+
     double x1, x2, y1, y2;
     for (const auto& elem1 : m_aretes)
         //affiche les aretes entre le sommets
@@ -205,6 +209,7 @@ void Graphe::affichage(Svgfile *ecran)
             }
         }
 
+
         ecran->addLine(x1,y1,x2,y2, "black");
         double x_moy=(x1+x2)/2-20;
         double y_moy =(y1+y2)/2;
@@ -220,6 +225,7 @@ void Graphe::affichage(Svgfile *ecran)
         p1_next=p1_next.substr(0,3);
         p2_next = std::to_string(p2);
         p2_next= p2_next.substr(0,3);
+
         //détermination et plaçace des poids sur la graphe de départ
         ecran->addText(x_moy,y_moy,p1_next+";"+p2_next,"red");
     }
@@ -228,10 +234,10 @@ void Graphe::affichage(Svgfile *ecran)
         //permettre d'afficher les données des sommets
     {
         ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
+
     }
 
 }
-
 
 void Graphe::kruskal(int choix, Svgfile *ecran2)
 {

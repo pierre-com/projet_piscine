@@ -11,15 +11,12 @@ class Graphe
 {
   public:
   Graphe (std::string);
-  //Graphe();
-  //void affichage_graphe_1();
   void affichage(Svgfile *ecran);
   void ponderation(std::string nomFichier_ponderation);
   void kruskal(int choix, Svgfile *ecran2);
   void kruskal(int choix);
   void affichage_kruskal(std::vector<Arete*> arete_pris,Svgfile &ecran);
   void pareto();
-  //void affichage(Svgfile *ecran);
   ~Graphe();
 
   private:
