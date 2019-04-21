@@ -416,13 +416,12 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
 
 /**
  * \brief       faire un pareto sur le graphe
- * \details     ??
+ * \details     genere tous les cas possible, trie les cas possible pour trouver les solutions de pareto, elle trie les solution de pareto pour trouver les optimum et affiche le resultat sur le SVG output
  *
- * \param    ??
+ * \param    Svgfile *ecran    permet de dessiner le graphe sur le SVG output
  * \return    on ne return aucune donnee
  *
  */
-
 void Graphe::pareto(Svgfile *ecran)
 {
     int c; // c= 2^n
@@ -628,23 +627,15 @@ void Graphe::pareto(Svgfile *ecran)
     std::cout <<"les optimum sont:"<<std::endl;
     for(int l=0; l<solut_pareto.size(); l++)
     {
-        ecran->addDisk((solut_pareto[l].first*10)+5, (solut_pareto[l].second*10)+5, 5, "redball");
+        ecran->addDisk((solut_pareto[l].first*10)+20, (solut_pareto[l].second*10)+20, 5, "redball");
        std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
     }
 
     //std::cout <<"les NON optimum sont:"<<std::endl;
     for(int l=0; l<solut_pareto_nulles.size(); l++)
     {
-        ecran->addDisk((solut_pareto_nulles[l].first*10)+5, (solut_pareto_nulles[l].second*10)+5, 5, "blueball");
+        ecran->addDisk((solut_pareto_nulles[l].first*10)+20, (solut_pareto_nulles[l].second*10)+20, 5, "blueball");
        // std::cout << solut_pareto_nulles[l].first << " ; " << solut_pareto_nulles[l].second << std::endl;
     }
-
-
-
-
-
-
-
-
 }
 Graphe::~Graphe() {}

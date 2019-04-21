@@ -108,7 +108,13 @@ void menu()
             }
             break;
         }
-        case 3:
+            case 3:
+                {
+                    system("cls");
+                    std::cout<<"Vous aviez choisi de faire un disjktra\n"<<std::endl;
+                    break;
+                }
+        case 4:
         {
             system("cls");
             std::cout<<"Vous venez de quitter l'application !\n Bye Bye !\n"<<std::endl;
@@ -116,14 +122,14 @@ void menu()
         }
         }
     }
-    while (choix==1 || choix==2);
+    while (choix==1 || choix==2 || choix==3);
 
 }
 
 
 /**
  * \brief       première interface avec l'utilisateur
- * \details     l'utilisateur va pourvoir choisir de faire un kruskal, un pareto ou quitter l'application
+ * \details     l'utilisateur va pourvoir choisir de faire un kruskal, un pareto, un dijktra ou quitter l'application
  *
  * \param     on ne prend rien en paramètre
  * \return    on  return le choix de l'utilisateur
@@ -135,11 +141,10 @@ int interface_principale()
     int choix;
     do
     {
-        std::cout<<"Que souhaitez vous effectuer? (Entrer le numéro de votre choix)\n1. Faire un Kruscal\n2. Faire un Pareto"<<std::endl;
-        std::cout<<"3. Quitter"<<std::endl;
+        std::cout<<"Que souhaitez vous effectuer? (Entrer le numéro de votre choix)\n1. Faire un Kruscal\n2. Faire un Pareto\n3. Faire un Dijktra\n4. Quitter"<<std::endl;
         std::cin>>choix;
     }
-    while (choix<0 && choix>3);
+    while (choix<0 && choix>4);
     return choix;
 }
 
