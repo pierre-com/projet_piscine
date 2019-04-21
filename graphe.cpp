@@ -1,4 +1,4 @@
-﻿#include "graphe.h"
+#include "graphe.h"
 #include "svgfile.h"
 #include <iostream>
 #include <fstream>
@@ -7,72 +7,28 @@
 #include <string>
 #include <stdio.h>
 #include <tgmath.h>
+#include <utility>
 
 
-void Graphe::pareto()
-{
-    int c; // c= 2^n
-    int pb=0; // pb représente le n de 2^n
-    int nb_posibilite=pow(2,m_aretes.size());
-    std::vector <int> tmp;
-    for (c=0; c<nb_posibilite; c++)
-    {
-        for (pb=m_aretes.size(); pb>=0; pb--)
-        {
-            //c>>pb ca insere autant de 0 que de pb de gauche a droite
-            int val_ajoute=3;
-            //std::cout<< ((c>>pb)&1);
-            val_ajoute=((c>>pb)&1);
-            //val_ajoute=val_ajoute+pow(10,m_aretes.size()+1);
-            //std::cout<< val_ajoute;
-            tmp.push_back(val_ajoute);
-            // l'operateur & est une porte qui ajoute 1
-        }
-        //on a notre chiffre
-
-        std::cout<< std::endl;
-    }
-
-/////////////////TESTT////////
-    for(const auto& elem1 : tmp)
-    {
-        std::cout<<elem1<<std::endl;
-    }
+/**
+ * \file          graphe.cpp
+ * \author    TD2 groupe 6
+ * \date       21/04/2019
+ * \brief       permet d effectuer les differents operations sur les graphes
+ *
+ * \details    cette partie du code permet de faire l'affichage des graphes en mode normal, suite a un pareto et kruskal.
+ *             Elle permet aussi de pouvoir traiter les algorithmes de kruskal et de pareto
+*/
 
 
-    /*///on met le tmp dans dans tab_chiffre en le transformnt en string
-    std::string tampon;
-    int i=0;
-    std::vector <std::string> tab_chiffre (tmp.size());
-    for (auto& elem1 : tmp)
-        {
-          tampon=std::to_string(elem1);
-          tab_chiffre[i]=tampon;
-          i++;
-        }
-        //le tab_chiffre est rempli mais il a un 1 devant en trop
-        //on lui enleve le 1 devant qui servait a la conversion de int au string pour evite les bug
-    for (int t=0;t<tmp.size();t++)
-    {
-     tab_chiffre[t]=tab_chiffre[t].substr(1);
-    }
-        //on a le tableau de string avec les vrais chiffres binaires
-    ///maitenant on tri le tableau de toutes les possibilités
-    //on converti le vector en tableau classique
-    for(int y=0;y<2;y++)
-    {
-        for(int i=0;i<tab_chiffre[y].size();i++)
-        {
-
-          std::cout<<tab_chiffre[i]<<std::endl;
-
-        }
-    }
-    */
-    std::cout<<" FINI";
-
-}
-
+/**
+ * \brief       récuperer les donnees du fichier texte
+ * \details    récupérer les donnees du fichier texte, les mettres dans des set et map associes afin de pouvoir les reutiliser dans le cas de pareto et kruskal
+ *
+ * \param    std::string nomFichier          c'est une chaine de caractere qui permet aux utilisateurs d'entree et d acceder aux donnees du fichier texte en rapport avec la partie necessaire pour la suite du code
+ * \return    on ne return aucune donnee
+ *
+ */
 Graphe::Graphe(std::string nomFichier)
 {
     std::ifstream ifs{nomFichier};
@@ -129,6 +85,15 @@ Graphe::Graphe(std::string nomFichier)
     ifs.close();
 }
 
+
+/**
+ * \brief       récuperer les donnees du fichier texte avec les poids des aretes
+ * \details    récupérer les donnees du fichier texte avec les poids des aretes, par rapport au identifiants des arete, on va attribuer les valeurs de poids des aretes dans le vecteur poids
+ *
+ * \param    std::string nomFichier_ponderation          c'est une chaine de caractere qui permet aux utilisateurs d'entree et d acceder aux donnees du fichier texte poids des aretes
+ * \return    on ne return aucune donnee
+ *
+ */
 void Graphe::ponderation(std::string nomFichier_ponderation)
 {
     std::ifstream ifs{nomFichier_ponderation};
@@ -148,7 +113,6 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     {
         throw std::runtime_error("Probleme lecture poids");
     }
-
     int id_arete2;//identifiant arete
     float poids1,poids2;// poids arete
     for (int i=0; i<nb_aretes; ++i)
@@ -170,7 +134,6 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
     ///on met le poids contenu dans aretes_poids dans m_aretes car ce dernier a tous les poids a 1;
     ///faire un vecteur pour le poids => comportant poids 1 et poids2 ==> utilisations du vecteur dans la partie en dessous
     // float poidsArete[2];
-
     for (auto& elem1 : m_aretes_poids)
     {
         for ( auto & elem2 : m_aretes)
@@ -185,9 +148,16 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
 }
 
 
+/**
+ * \brief       es aretes
+ * \details    récupérer les donnees du fichier texte avec les poids des aretes, par rapport au identifiants des arete, on va attribuer les valeurs de poids des aretes dans le vecteur poids
+ *
+ * \param    std::string nomFichier_ponderation          c'est une chaine de caractere qui permet aux utilisateurs d'entree et d acceder aux donnees du fichier texte poids des aretes
+ * \return    on ne return aucune donnee
+ *
+ */
 void Graphe::affichage(Svgfile *ecran)
 {
-
     double x1, x2, y1, y2;
     for (const auto& elem1 : m_aretes)
         //affiche les aretes entre le sommets
@@ -209,7 +179,6 @@ void Graphe::affichage(Svgfile *ecran)
             }
         }
 
-
         ecran->addLine(x1,y1,x2,y2, "black");
         double x_moy=(x1+x2)/2-20;
         double y_moy =(y1+y2)/2;
@@ -225,7 +194,6 @@ void Graphe::affichage(Svgfile *ecran)
         p1_next=p1_next.substr(0,3);
         p2_next = std::to_string(p2);
         p2_next= p2_next.substr(0,3);
-
         //détermination et plaçace des poids sur la graphe de départ
         ecran->addText(x_moy,y_moy,p1_next+";"+p2_next,"red");
     }
@@ -234,10 +202,10 @@ void Graphe::affichage(Svgfile *ecran)
         //permettre d'afficher les données des sommets
     {
         ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "greenball");
-
     }
 
 }
+
 
 void Graphe::kruskal(int choix, Svgfile *ecran2)
 {
@@ -347,6 +315,9 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
 
     /*-------------------Commencement de l'affichage------------------------*/
     //déclaration d'un vecteur/unordored set pour mettre les valeurs des aretes qu'on garde
+    //afficher poids total de poids 1 et poids 0 des graphes qu'on sort
+    int poids_tot1=0;
+    int poids_tot2=0;
     std::vector<Arete*> arete_pris;
 //    affichage_kruskal(arete_pris,&ecran2);
     for(auto& elem1 : m_aretes)
@@ -395,7 +366,9 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
         float p1;
         float p2;
         p1=arete_pris[i]->getPoids(0);
+        poids_tot1=poids_tot1+p1;
         p2=arete_pris[i]->getPoids(1);
+        poids_tot2=poids_tot2+p2;
         std::string p1_next;
         std::string p2_next;
         //choisir 1 chiffre après la virgule de notre float poids1, poids2
@@ -403,7 +376,7 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
         p1_next=p1_next.substr(0,3);
         p2_next = std::to_string(p2);
         p2_next= p2_next.substr(0,3);
-        //détermination et plaçace des poids sur la graphe de départ
+        //détermination et plaçace des poids sur la graphe de dépar
         ecran2->addText(x_moy,y_moy,p1_next+";"+p2_next,"green");
 
         //affichage des sommets
@@ -413,6 +386,239 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
             ecran2->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "redball");
         }
     }
+
+    std::cout<<"poids"<<std::endl;
+    std::cout<<poids_tot1<<std::endl;
+    std::cout<<poids_tot2<<std::endl;
+    std::string p1_next_poids1;
+    std::string p2_next_poids2;
+    //choisir 1 chiffre après la virgule de notre float poids1, poids2
+    p1_next_poids1= std::to_string(poids_tot1);
+    p1_next_poids1=p1_next_poids1.substr(0,3);
+    p2_next_poids2 = std::to_string(poids_tot2);
+    p2_next_poids2= p2_next_poids2.substr(0,3);
+    ecran2->addText(50,50,"couts totaux : ["+p1_next_poids1+";"+p2_next_poids2+"]","green");
+
+    //ecran2->addText(50,50,"coucou"+" salut","green");
+}
+
+void Graphe::pareto()
+{
+    int c; // c= 2^n
+    int pb=1; // pb représente le n de 2^n
+    int tmp=0;
+    std::vector<std::vector <int> > combinaisons;
+    std::vector <int> tempo;
+    for (c=0; c<pow(2,m_aretes.size()); c++)
+    {
+        for (pb=(m_aretes.size()-1); pb>=0; pb--)
+        {
+            tmp=((c>>pb)&1);
+            //std::cout<<tmp;
+            if(tmp==1)
+            {
+                tempo.push_back(1);
+            }
+            if(tmp==0)
+            {
+                tempo.push_back(0);
+            }
+        }
+
+        combinaisons.push_back(tempo);
+        tempo.clear();
+        //std::cout<< std::endl;
+    }
+///test affichage
+    /*
+    for (int f=0;f<combinaisons.size();f++)
+    {
+      for(int s=0;s<m_aretes.size();s++)
+      {
+        std::cout<<combinaisons[f][s]<< " ";
+      }
+      std::cout<< std::endl;
+    }
+    */
+////tri des combinaison///
+    int comp=0;
+    for (int f=0; f<combinaisons.size(); f++)
+    {
+        for(int s=0; s<m_aretes.size(); s++)
+        {
+            comp=comp+combinaisons[f][s];
+        }
+        if(comp!=(m_sommets.size()-1))////m_sommet.size()-1
+        {
+            combinaisons.erase(combinaisons.begin()+f);
+            f=0;
+        }
+        comp=0;
+
+    }
+//on attribue les 1 a des aretes
+    std::vector <int> arete_exist;
+    std::vector< std::pair<float,float> > solut_pareto;
+    std::vector< std::pair<float,float> > solut_pareto_ordered;
+    std::pair <float,float> poids_graphe;  //poids total de 1 graphe
+    for (int f=0; f<combinaisons.size(); f++)
+    {
+        for(int s=0; s<m_aretes.size(); s++)
+        {
+            if(combinaisons[f][s]==1)
+            {
+                //l'arete numero s existe
+                arete_exist.push_back(s);
+            }
+        }
+        //////TRI du graphe f (on regarde si c'est une sol° de pareto) /////////////////////////
+
+        int allLinked=0;
+        int connexite[m_sommets.size()][2];
+        //on déclare h, a -> variable itératrice pour les boucle
+        int h=0;
+        int x, y, v;
+        //previous -> avoir valeur sommet précédent
+        //sommets marqués
+        int markSom1;
+        int markSom2;
+
+        //on met toutes les mark a false
+        for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
+        {
+            elem2->setMark(false);
+
+        }
+        //assimile les id au tableau de connexite
+        for(auto& elem1: m_sommets)
+        {
+            connexite[h][0] = elem1.second->getm_id();
+            connexite[h][1] = elem1.second->getm_id();
+            h++;
+        }
+
+        for(auto& elem1: arete_exist)  //arretes ordonés
+        {
+            for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
+            {
+                h=0;
+                if(elem2->getm_id_arete() == elem1)  // si l'id de ordered = arrete m_arretes
+                {
+                    int sommetx = elem2->getm_sommet_x(); // on match les sommets
+                    int sommety = elem2->getm_sommet_y();
+
+                    for(auto& elem3: m_sommets)  //on parcourt les sommets
+                    {
+                        if(connexite[h][1] == sommetx )
+                        {
+                            //markSom1 = connexite[h][0]; //sommet marqué -> sommet de l'arete
+                            x = h; //valeurs de son id dans le tableau
+                        }
+                        //same
+                        if(connexite[h][1] == sommety)
+                        {
+                            //markSom2 = connexite[h][0];
+                            y=h;
+                        }
+                        h++;
+                    }
+                    //si les indices des deux sommets marqués sont différent, alors on les selectionne
+                    if(connexite[x][0] != connexite[y][0])
+                    {
+
+                        //si c'est le premier tour
+                        markSom1 = connexite[x][0];
+                        markSom2 = connexite[y][0];
+                        connexite[y][0] = connexite[x][0];
+
+                        for(v=0; v<m_sommets.size(); v++)
+                        {
+                            if(markSom2 == connexite[v][0])
+                            {
+                                //std::cout << connexite[v][0] << std::endl;
+                                connexite[v][0] = markSom1;
+                                //std::cout << connexite[v][0] << std::endl;
+
+                            }
+                        }
+                        elem2->setMark(true); //on marque l'arrete
+                    }
+                }
+            }
+        }
+        int o, u=0;
+        for(o=0; o<m_sommets.size()-1; o++)
+        {
+            if(connexite[o][0] != connexite[o+1][0])
+            {
+                u=1;
+            }
+        }
+        if(u==1)
+        {
+            // std::cout << f << std::endl;
+            // std::cout << "Graphe non connexe" << std::endl;
+        }
+        else
+        {
+            /////LES SOLUTIONS //////////
+            // std::cout << f << std::endl;
+            // std::cout << "Graphe connexe" << std::endl;
+            float sommePoids1=0;
+            float sommePoids2=0;
+            for(auto& elem2 : m_aretes)
+            {
+                //arretes  -> pour les matcher
+                if(elem2->getMark() == true)
+                {
+                    sommePoids1 = elem2->getPoids(0) + sommePoids1;
+                    sommePoids2 = elem2->getPoids(1) + sommePoids2;
+                }
+            }
+            poids_graphe.first=sommePoids1;
+            poids_graphe.second=sommePoids2;
+            solut_pareto.push_back(poids_graphe);
+            // std::cout << sommePoids1 << std::endl;
+            // std::cout << sommePoids2 << std::endl;
+        }
+
+        //Vide le arete_existe
+        arete_exist.clear();
+// std::cout<< std::endl;
+    }
+///////////////////TRI des solution de pareto///////////////
+    for(int i=0 ; i<solut_pareto.size() ; i++)
+    {
+        int a=0;
+        for(int j=0 ; j<solut_pareto.size() ; j++)
+        {
+
+            if(a==0 && solut_pareto[i].first>solut_pareto[j].first && solut_pareto[i].second>solut_pareto[j].second )
+            {
+                solut_pareto_ordered.push_back(solut_pareto[j]);
+                a=1;
+            }
+            for(int k=0; k<solut_pareto_ordered.size(); k++)
+            {
+                if(a==1 && solut_pareto_ordered[k].first>solut_pareto[j].first && solut_pareto_ordered[k].second>solut_pareto[j].second)
+                {
+                    solut_pareto_ordered.erase(solut_pareto_ordered.begin()+k);
+                    solut_pareto_ordered.push_back(solut_pareto[j]);
+                    a=0;
+                    j=0;
+                }
+            }
+
+        }
+
+
+    }
+    std::cout << "okkk";
+    for(int l=0; l<solut_pareto_ordered.size(); l++)
+    {
+        std::cout << solut_pareto_ordered[l].first << " ; " << solut_pareto[l].second << std::endl;
+    }
+
 }
 
 

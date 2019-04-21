@@ -1,4 +1,4 @@
-﻿#ifndef ARETE_H_INCLUDED
+#ifndef ARETE_H_INCLUDED
 #define ARETE_H_INCLUDED
 #include <iostream>
 #include <vector>
