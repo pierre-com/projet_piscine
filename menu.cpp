@@ -94,6 +94,15 @@ void menu()
             case 2 :
             {
                 system("cls");
+                std::cout<<"Vous aviez choisi de faire un Pareto\nVeuillez saisir le nom du fichier_graphe"<<std::endl;
+                std::string name_graphe;
+                std::cin>>name_graphe;
+                Graphe a(name_graphe);
+                std::cout<<"Veuillez saisir le nom du fichier_poids"<<std::endl;
+                std::string name_poids;
+                std::cin>>name_poids;
+                a.ponderation(name_poids);
+                a.pareto(&svgout);
                 break;
             }
             }

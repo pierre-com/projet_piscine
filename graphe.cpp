@@ -625,11 +625,11 @@ void Graphe::pareto(Svgfile *ecran)
     ecran->addLine(1000,20,980,40,"black");
     ecran->addLine(20,800,0,780,"black");
     ecran->addLine(20,800,40,780,"black");
-    //std::cout <<"les optimum sont:"<<std::endl;
+    std::cout <<"les optimum sont:"<<std::endl;
     for(int l=0; l<solut_pareto.size(); l++)
     {
         ecran->addDisk((solut_pareto[l].first*10)+5, (solut_pareto[l].second*10)+5, 5, "redball");
-       // std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
+       std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
     }
 
     //std::cout <<"les NON optimum sont:"<<std::endl;

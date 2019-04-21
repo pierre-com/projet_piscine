@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="800">
+
+<line x1="20" y1="20" x2="1000" y2="20" stroke="black" />
+<line x1="20" y1="20" x2="20" y2="800" stroke="black" />
+<line x1="1000" y1="20" x2="980" y2="0" stroke="black" />
+<line x1="1000" y1="20" x2="980" y2="40" stroke="black" />
+<line x1="20" y1="800" x2="0" y2="780" stroke="black" />
+<line x1="20" y1="800" x2="40" y2="780" stroke="black" />
+<circle cx="235" cy="295" r="5" fill="url(#redball)" />
+<circle cx="245" cy="275" r="5" fill="url(#redball)" />
+<circle cx="255" cy="265" r="5" fill="url(#redball)" />
+<circle cx="255" cy="345" r="5" fill="url(#redball)" />
+<circle cx="265" cy="315" r="5" fill="url(#redball)" />
+<circle cx="275" cy="275" r="5" fill="url(#redball)" />
+<circle cx="285" cy="255" r="5" fill="url(#redball)" />
+<circle cx="285" cy="265" r="5" fill="url(#redball)" />
+<circle cx="305" cy="275" r="5" fill="url(#redball)" />
+<circle cx="315" cy="255" r="5" fill="url(#redball)" />
+<circle cx="335" cy="255" r="5" fill="url(#redball)" />
+<circle cx="355" cy="255" r="5" fill="url(#redball)" />
+<circle cx="385" cy="255" r="5" fill="url(#redball)" />
+<circle cx="405" cy="255" r="5" fill="url(#redball)" />
+<circle cx="245" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="255" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="265" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="265" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="395" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="405" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="405" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="395" r="5" fill="url(#blueball)" />
+<circle cx="435" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="435" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="445" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="445" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="465" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="255" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="265" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="265" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="395" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="435" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="445" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="455" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="265" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="395" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="435" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="395" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="375" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="355" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="385" r="5" fill="url(#blueball)" />
+<circle cx="445" cy="365" r="5" fill="url(#blueball)" />
+<circle cx="275" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="345" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="285" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="335" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="405" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="435" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="305" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="285" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="305" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="395" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="415" cy="325" r="5" fill="url(#blueball)" />
+<circle cx="295" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="315" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="335" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="315" r="5" fill="url(#blueball)" />
+<circle cx="385" cy="295" r="5" fill="url(#blueball)" />
+<circle cx="325" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="345" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="355" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="375" cy="275" r="5" fill="url(#blueball)" />
+<circle cx="425" cy="265" r="5" fill="url(#blueball)" />
+<circle cx="365" cy="265" r="5" fill="url(#blueball)" />
+  
+
+<defs>
+    <radialGradient id="redball" cx="30%" cy="30%" r="100%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:rgb(255,250,250)" />
+      <stop offset="3%" style="stop-color:rgb(255,250,250)" />
+      <stop offset="7%" style="stop-color:rgb(255,160,160)" />
+      <stop offset="70%" style="stop-color:rgb(255,0,0)" />
+      <stop offset="100%" style="stop-color:rgb(255,0,0)" />
+    </radialGradient>
+    <radialGradient id="greenball" cx="30%" cy="30%" r="100%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:rgb(250,255,250)" />
+      <stop offset="3%" style="stop-color:rgb(250,255,250)" />
+      <stop offset="7%" style="stop-color:rgb(160,255,160)" />
+      <stop offset="70%" style="stop-color:rgb(0,255,0)" />
+      <stop offset="100%" style="stop-color:rgb(0,255,0)" />
+    </radialGradient>
+    <radialGradient id="blueball" cx="30%" cy="30%" r="100%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:rgb(250,250,255)" />
+      <stop offset="3%" style="stop-color:rgb(250,250,255)" />
+      <stop offset="7%" style="stop-color:rgb(160,160,255)" />
+      <stop offset="70%" style="stop-color:rgb(0,0,255)" />
+      <stop offset="100%" style="stop-color:rgb(0,255,0)" />
+    </radialGradient>
+    <radialGradient id="yellowball" cx="30%" cy="30%" r="100%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:rgb(255,255,250)" />
+      <stop offset="3%" style="stop-color:rgb(255,255,250)" />
+      <stop offset="7%" style="stop-color:rgb(255,255,160)" />
+      <stop offset="70%" style="stop-color:rgb(255,255,0)" />
+      <stop offset="100%" style="stop-color:rgb(255,255,0)" />
+    </radialGradient>
+    <radialGradient id="greyball" cx="30%" cy="30%" r="100%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:rgb(250,250,250)" />
+      <stop offset="3%" style="stop-color:rgb(250,250,250)" />
+      <stop offset="7%" style="stop-color:rgb(160,160,160)" />
+      <stop offset="70%" style="stop-color:rgb(100,100,100)" />
+      <stop offset="100%" style="stop-color:rgb(100,100,100)" />
+    </radialGradient>
+  </defs>
+
+
+</svg>
