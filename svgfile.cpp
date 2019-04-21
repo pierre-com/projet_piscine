@@ -26,11 +26,11 @@ std::set<std::string> Svgfile::s_openfiles;
 
 /**
  * \brief       creation de la page SVG output
- * \details     mise en place
+ * \details     mise en place place de l'ouverture des fichiers
  *
- * \param     pas de parametre
- * \param     pas de parametre
- * \param     pas de parametre
+ * \param     std::string _filename    nom du fichier texte
+ * \param     int _width               largeur de la page SVG output
+ * \param     int _height              largeur de la page SVG output
  *
  */
 Svgfile::Svgfile(std::string _filename, int _width, int _height) :
@@ -82,6 +82,19 @@ std::string attrib(std::string name, T val)
     return oss.str();
 }
 
+
+
+/**
+ * \brief       dessiner un disque
+ * \details     dessiner un disque sur le SVG output
+ *
+ * \param     double x      coordonnee des abscisses pour le placement du disque
+ * \param     double y      coordonnee des ordonnees pour le placement du disque
+ * \param     double r      rayon du disque
+ * \param     std::string color    couleur pour le disque
+ * \return    on return rien
+ *
+ */
 void Svgfile::addDisk(double x, double y, double r, std::string color)
 {
     m_ostrm << "<circle "
@@ -92,6 +105,18 @@ void Svgfile::addDisk(double x, double y, double r, std::string color)
             << "/>\n";
 }
 
+/**
+ * \brief       dessiner un disque
+ * \details     dessiner un disque sur le SVG output
+ *
+ * \param     double x1      coordonnee des abscisses pour un premier sommet de la ligne
+ * \param     double x2      coordonnee des abscisses pour un deuxieme sommet de la ligne
+ * \param     double y1      coordonnee des ordonnees pour un premier sommet de la ligne
+ * \param     double y2      coordonnee des ordonnees pour un deuxieme sommet de la ligne
+ * \param     std::string color    couleur pour le disque
+ * \return    on return rien
+ *
+ */
 void Svgfile::addLine(double x1, double y1, double x2, double y2, std::string color)
 {
     m_ostrm << "<line "
@@ -103,12 +128,34 @@ void Svgfile::addLine(double x1, double y1, double x2, double y2, std::string co
             << "/>\n";
 }
 
+/**
+ * \brief       dessiner une croix
+ * \details     dessiner une croix sur le SVG output
+ *
+ * \param     double x      coordonnee des abscisses pour un premier sommet de la ligne
+ * \param     double y      coordonnee des ordonnees pour un premier sommet de la ligne
+ * \param     double span   largeur de la croix
+ * \param     std::string color    couleur pour le disque
+ * \return    on return rien
+ *
+ */
 void Svgfile::addCross(double x, double y, double span, std::string color)
 {
     addLine(x-span, y-span, x+span, y+span, color);
     addLine(x-span, y+span, x+span, y-span, color);
 }
 
+/**
+ * \brief       dessiner un disque
+ * \details     dessiner un disque sur le SVG output
+ *
+ * \param     double x      coordonnee des abscisses pour un premier sommet de la ligne
+ * \param     double y      coordonnee des ordonnees pour un premier sommet de la ligne
+ * \param     std::string text     ajout du texte sur le SVG output
+ * \param     std::string color    couleur du texte
+ * \return    on return rien
+ *
+ */
 void Svgfile::addText(double x, double y, std::string text, std::string color)
 {
     /// <text x="180" y="60">Un texte</text>
@@ -119,28 +166,23 @@ void Svgfile::addText(double x, double y, std::string text, std::string color)
             << ">" << text << "</text>\n";
 }
 
+/**
+ * \brief       dessiner un disque
+ * \details     dessiner un disque sur le SVG output
+ *
+ * \param     double x      coordonnee des abscisses pour un premier sommet de la ligne
+ * \param     double y      coordonnee des ordonnees pour un premier sommet de la ligne
+ * \param     double val    valeur a écrire est un chiffre
+ * \param     std::string color    couleur du texte
+ * \return    on return rien
+ *
+ */
 void Svgfile::addText(double x, double y, double val, std::string color)
 {
     std::ostringstream oss;
     oss << val;
 
     addText(x, y, oss.str(), color);
-}
-
-void Svgfile::addText(double x, double y, double val,std::string text, double val2, std::string color)
-{
-     std::ostringstream oss;
-     //std::ostringstream oss2;
-     std::ostringstream oss3;
-     oss << val;
-     //oss2 << ";";
-     oss3 <<val2;
-
-    m_ostrm << "<text "
-            << attrib("x", x)
-            << attrib("y", y)
-            << attrib("fill", color)
-            << ">" << text << "</text>\n";
 }
 
 

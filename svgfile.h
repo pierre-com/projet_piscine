@@ -30,8 +30,6 @@ public:
 
     void addText(double x, double y, std::string text, std::string color=defcol);
     void addText(double x, double y, double val, std::string color=defcol);
-    void addText(double x, double y, double val, std::string text,double val2, std::string color=defcol);
-
 
     void addGrid(double span=100.0, bool numbering=true, std::string color="lightgrey");
 };
