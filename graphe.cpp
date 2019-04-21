@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <tgmath.h>
 #include <utility>
+#include <algorithm>
 
 
 /**
@@ -421,6 +422,7 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
  * \return    on ne return aucune donnee
  *
  */
+
 void Graphe::pareto()
 {
     int c; // c= 2^n
@@ -443,23 +445,12 @@ void Graphe::pareto()
                 tempo.push_back(0);
             }
         }
-
         combinaisons.push_back(tempo);
         tempo.clear();
         //std::cout<< std::endl;
     }
-///test affichage
-    /*
-    for (int f=0;f<combinaisons.size();f++)
-    {
-      for(int s=0;s<m_aretes.size();s++)
-      {
-        std::cout<<combinaisons[f][s]<< " ";
-      }
-      std::cout<< std::endl;
-    }
-    */
-////tri des combinaison///
+
+    ////tri des combinaison///
     int comp=0;
     for (int f=0; f<combinaisons.size(); f++)
     {
@@ -473,9 +464,9 @@ void Graphe::pareto()
             f=0;
         }
         comp=0;
-
     }
-//on attribue les 1 a des aretes
+
+    //on attribue les 1 a des aretes
     std::vector <int> arete_exist;
     std::vector< std::pair<float,float> > solut_pareto;
     std::vector< std::pair<float,float> > solut_pareto_ordered;
@@ -490,8 +481,8 @@ void Graphe::pareto()
                 arete_exist.push_back(s);
             }
         }
-        //////TRI du graphe f (on regarde si c'est une sol° de pareto) /////////////////////////
 
+        //////TRI du graphe f (on regarde si c'est une sol° de pareto) /////////////////////////
         int allLinked=0;
         int connexite[m_sommets.size()][2];
         //on déclare h, a -> variable itératrice pour les boucle
@@ -501,12 +492,10 @@ void Graphe::pareto()
         //sommets marqués
         int markSom1;
         int markSom2;
-
         //on met toutes les mark a false
         for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
         {
             elem2->setMark(false);
-
         }
         //assimile les id au tableau de connexite
         for(auto& elem1: m_sommets)
@@ -515,7 +504,6 @@ void Graphe::pareto()
             connexite[h][1] = elem1.second->getm_id();
             h++;
         }
-
         for(auto& elem1: arete_exist)  //arretes ordonés
         {
             for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
@@ -525,7 +513,6 @@ void Graphe::pareto()
                 {
                     int sommetx = elem2->getm_sommet_x(); // on match les sommets
                     int sommety = elem2->getm_sommet_y();
-
                     for(auto& elem3: m_sommets)  //on parcourt les sommets
                     {
                         if(connexite[h][1] == sommetx )
@@ -544,12 +531,10 @@ void Graphe::pareto()
                     //si les indices des deux sommets marqués sont différent, alors on les selectionne
                     if(connexite[x][0] != connexite[y][0])
                     {
-
                         //si c'est le premier tour
                         markSom1 = connexite[x][0];
                         markSom2 = connexite[y][0];
                         connexite[y][0] = connexite[x][0];
-
                         for(v=0; v<m_sommets.size(); v++)
                         {
                             if(markSom2 == connexite[v][0])
@@ -557,7 +542,6 @@ void Graphe::pareto()
                                 //std::cout << connexite[v][0] << std::endl;
                                 connexite[v][0] = markSom1;
                                 //std::cout << connexite[v][0] << std::endl;
-
                             }
                         }
                         elem2->setMark(true); //on marque l'arrete
@@ -575,14 +559,14 @@ void Graphe::pareto()
         }
         if(u==1)
         {
-            // std::cout << f << std::endl;
-            // std::cout << "Graphe non connexe" << std::endl;
+            std::cout << f << std::endl;
+            std::cout << "Graphe non connexe" << std::endl;
         }
         else
         {
             /////LES SOLUTIONS //////////
-            // std::cout << f << std::endl;
-            // std::cout << "Graphe connexe" << std::endl;
+            std::cout << f << std::endl;
+            std::cout << "Graphe connexe" << std::endl;
             float sommePoids1=0;
             float sommePoids2=0;
             for(auto& elem2 : m_aretes)
@@ -597,48 +581,54 @@ void Graphe::pareto()
             poids_graphe.first=sommePoids1;
             poids_graphe.second=sommePoids2;
             solut_pareto.push_back(poids_graphe);
-            // std::cout << sommePoids1 << std::endl;
-            // std::cout << sommePoids2 << std::endl;
+            std::cout << sommePoids1 << std::endl;
+            std::cout << sommePoids2 << std::endl;
         }
 
         //Vide le arete_existe
         arete_exist.clear();
-// std::cout<< std::endl;
+        std::cout<< std::endl;
     }
-///////////////////TRI des solution de pareto///////////////
+
+    std::cout << "le nb de solution est:" << std::endl;
+    std::cout << solut_pareto.size() << std::endl;
+    ///////////////////TRI des solution de pareto//////////////
+    //std::vector< std::pair<float,float> > solut_pareto_optimum;
+    std::vector< std::pair<float,float> > solut_pareto_nulles;
+    sort(solut_pareto.begin(), solut_pareto.end());
+    for(int l=0; l<solut_pareto.size(); l++)
+    {
+        std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
+    }
+    ///supprime tout ceux qui sont plus grand que p1 et P2
     for(int i=0 ; i<solut_pareto.size() ; i++)
     {
-        int a=0;
         for(int j=0 ; j<solut_pareto.size() ; j++)
         {
-
-            if(a==0 && solut_pareto[i].first>solut_pareto[j].first && solut_pareto[i].second>solut_pareto[j].second )
+            if((solut_pareto[i].first<solut_pareto[j].first) && (solut_pareto[i].second<solut_pareto[j].second))
             {
-                solut_pareto_ordered.push_back(solut_pareto[j]);
-                a=1;
+                solut_pareto_nulles.push_back(solut_pareto[j]);
+                solut_pareto.erase(solut_pareto.begin()+j);
             }
-            for(int k=0; k<solut_pareto_ordered.size(); k++)
-            {
-                if(a==1 && solut_pareto_ordered[k].first>solut_pareto[j].first && solut_pareto_ordered[k].second>solut_pareto[j].second)
-                {
-                    solut_pareto_ordered.erase(solut_pareto_ordered.begin()+k);
-                    solut_pareto_ordered.push_back(solut_pareto[j]);
-                    a=0;
-                    j=0;
-                }
-            }
-
         }
-
-
     }
-    std::cout << "okkk";
-    for(int l=0; l<solut_pareto_ordered.size(); l++)
+    std::cout <<"les optimum sont:"<<std::endl;
+    for(int l=0; l<solut_pareto.size(); l++)
     {
-        std::cout << solut_pareto_ordered[l].first << " ; " << solut_pareto[l].second << std::endl;
+        std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
     }
+
+    /////////////////AFFICHAGE//////////////////////
+
+    // Dans solut_pareto se trouve les points optimum et dans solut_pareto_nulles se trouves les autres solutions
+
+
+
+
+
+
+
+
 
 }
-
-
 Graphe::~Graphe() {}
