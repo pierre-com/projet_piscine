@@ -341,11 +341,11 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
     }
 
     //vérification des aretes qu'on push
-   /* std::cout<<"ok1"<<std::endl;
-    for(int i=0; i<arete_pris.size(); i++)
-    {
-        std::cout<<arete_pris[i]->getm_id_arete()<<std::endl;
-    }*/
+    /* std::cout<<"ok1"<<std::endl;
+     for(int i=0; i<arete_pris.size(); i++)
+     {
+         std::cout<<arete_pris[i]->getm_id_arete()<<std::endl;
+     }*/
     //affichage de Kruskal
     //affichage des arêtes
 
@@ -424,51 +424,38 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
  */
 void Graphe::pareto(Svgfile *ecran)
 {
-    int c; // c= 2^n
-    int pb=1; // pb représente le n de 2^n
+    int c; // variable qui va jusqu'a 2^nb_aretes
+    int pb=1; // variable qui représente le nb_aretes
     int tmp=0;
     std::vector<std::vector <int> > combinaisons;
     std::vector <int> tempo;
+    int nb_de_un=0; ///variable qui compte le nb de 1 dans une ligne binaire (une ligne represente un graphe)
     for (c=0; c<pow(2,m_aretes.size()); c++)
     {
         for (pb=(m_aretes.size()-1); pb>=0; pb--)
         {
-            tmp=((c>>pb)&1);
-            //std::cout<<tmp;
+            tmp=((c>>pb)&1);//genere des O ou des 1
             if(tmp==1)
             {
-                tempo.push_back(1);
+                tempo.push_back(1);///stock les valeur dans un tab tempon
+                nb_de_un ++;
             }
             if(tmp==0)
             {
                 tempo.push_back(0);
             }
         }
-        combinaisons.push_back(tempo);
+        if(nb_de_un==(m_sommets.size()-1))//combinaisons qui ont exactement (ordre-1) arêtes
+        {
+            combinaisons.push_back(tempo);//on met la ligne dans un autre tableau
+        }
         tempo.clear();
-        //std::cout<< std::endl;
+        nb_de_un=0;
     }
-
-    ////tri des combinaison///
-    int comp=0;
-    for (int f=0; f<combinaisons.size(); f++)
-    {
-        for(int s=0; s<m_aretes.size(); s++)
-        {
-            comp=comp+combinaisons[f][s];
-        }
-        if(comp!=(m_sommets.size()-1))////m_sommet.size()-1
-        {
-            combinaisons.erase(combinaisons.begin()+f);
-            f=0;
-        }
-        comp=0;
-    }
-
     //on attribue les 1 a des aretes
     std::vector <int> arete_exist;
-    std::vector< std::pair<float,float> > solut_pareto;
-    std::vector< std::pair<float,float> > solut_pareto_ordered;
+    std::pair <std::pair <float,float>,int >pareto_solut_graphe;///stock les poids et le numéro du graphe
+    std::vector<std::pair < std::pair <float,float>,int >> pareto_final;//tableau des graphes et de leurs poids
     std::pair <float,float> poids_graphe;  //poids total de 1 graphe
     for (int f=0; f<combinaisons.size(); f++)
     {
@@ -480,7 +467,6 @@ void Graphe::pareto(Svgfile *ecran)
                 arete_exist.push_back(s);
             }
         }
-
         //////TRI du graphe f (on regarde si c'est une sol° de pareto) /////////////////////////
         int allLinked=0;
         int connexite[m_sommets.size()][2];
@@ -491,6 +477,7 @@ void Graphe::pareto(Svgfile *ecran)
         //sommets marqués
         int markSom1;
         int markSom2;
+
         //on met toutes les mark a false
         for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
         {
@@ -503,6 +490,7 @@ void Graphe::pareto(Svgfile *ecran)
             connexite[h][1] = elem1.second->getm_id();
             h++;
         }
+
         for(auto& elem1: arete_exist)  //arretes ordonés
         {
             for(auto& elem2 : m_aretes)  //arretes  -> pour les matcher
@@ -548,7 +536,7 @@ void Graphe::pareto(Svgfile *ecran)
                 }
             }
         }
-        int o, u=0;
+        int o=0, u=0;
         for(o=0; o<m_sommets.size()-1; o++)
         {
             if(connexite[o][0] != connexite[o+1][0])
@@ -558,8 +546,8 @@ void Graphe::pareto(Svgfile *ecran)
         }
         if(u==1)
         {
-            std::cout << f << std::endl;
-            std::cout << "Graphe non connexe" << std::endl;
+            //std::cout << f << std::endl;
+            //std::cout << "Graphe non connexe" << std::endl;
         }
         else
         {
@@ -579,63 +567,401 @@ void Graphe::pareto(Svgfile *ecran)
             }
             poids_graphe.first=sommePoids1;
             poids_graphe.second=sommePoids2;
-            solut_pareto.push_back(poids_graphe);
-           // std::cout << sommePoids1 << std::endl;
-            //std::cout << sommePoids2 << std::endl;
+            /// on recupere le numero et les poids de chaque graphe
+            pareto_solut_graphe.second= f;
+            pareto_solut_graphe.first=poids_graphe;
+            pareto_final.push_back(pareto_solut_graphe);//on met le tout dans le tableau
         }
-
         //Vide le arete_existe
         arete_exist.clear();
-        //std::cout<< std::endl;
     }
 
-   // std::cout << "le nb de solution est:" << std::endl;
-   // std::cout << solut_pareto.size() << std::endl;
-    ///////////////////TRI des solution de pareto//////////////
-    //std::vector< std::pair<float,float> > solut_pareto_optimum;
-    std::vector< std::pair<float,float> > solut_pareto_nulles;
-    sort(solut_pareto.begin(), solut_pareto.end());
-    /*for(int l=0; l<solut_pareto.size(); l++)
+    ///////////////////TRI des solution de pareto///////////////
+    std::vector<std::pair < std::pair <float,float>,int >>solut_pareto_nulles;//on y met les solut° pas optimum
+    sort(pareto_final.begin(), pareto_final.end());//fonction qui tri les graphe par ordre croissant en fct de leur premier poids
+    int a=0;
+
+    ///supprime tout ceux qui sont plus grand que poids1 et que poids2
+
+    for(int i=0 ; i<pareto_final.size() ; i++)
+
     {
-        std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
-    }*/
-    ///supprime tout ceux qui sont plus grand que p1 et P2
-    for(int i=0 ; i<solut_pareto.size() ; i++)
-    {
-        for(int j=0 ; j<solut_pareto.size() ; j++)
+
+        for(int j=0 ; j<pareto_final.size() ; j++)
+
         {
-            if((solut_pareto[i].first<solut_pareto[j].first) && (solut_pareto[i].second<solut_pareto[j].second))
+
+           /* if((pareto_final[i].first.first<pareto_final[j].first.first) && (pareto_final[i].first.second<pareto_final[j].first.second))
+
             {
-                solut_pareto_nulles.push_back(solut_pareto[j]);
-                solut_pareto.erase(solut_pareto.begin()+j);
+
+            solut_pareto_nulles.push_back(pareto_final[j]);//on met les pas optimum ici
+
+               pareto_final.erase(pareto_final.begin()+j);// on les efface du tableau pour n'y laisser que les optimum
+
+                j=0;
+
+            } */
+
+            if((pareto_final[i].first.first<=pareto_final[j].first.first))
+
+            {
+
+                a++;
+
             }
+
+            if((pareto_final[i].first.second<=pareto_final[j].first.second)&&(pareto_final[i].first.first<pareto_final[j].first.first))
+
+            {
+
+                a++;
+
+            }
+
+            if(a==2)
+
+            {
+
+                solut_pareto_nulles.push_back(pareto_final[j]);//on met les pas optimum ici
+
+                pareto_final.erase(pareto_final.begin()+j);// on les efface du tableau pour n'y laisser que les optimum
+
+                j=0;
+
+            }
+
+            a=0;
+
+
+
         }
+
     }
 
+    ////////////////////AFFICHAGE/////////////////
 
-    /////////////////AFFICHAGE//////////////////////
-    // Dans solut_pareto se trouve les points optimum et dans solut_pareto_nulles se trouves les autres solutions
-    //std::vector< std::pair<float,float> > solut_pareto;
-    //std::vector< std::pair<float,float> > solut_pareto_nulles;
-    //affichage des axes
+    ///affichage des points ici///
     ecran->addLine(20,20,1000,20,"black");
+    ecran->addText(40,990,"y","black");
+    ecran->addText(990,5,"x","black");
     ecran->addLine(20,20,20,800,"black");
     ecran->addLine(1000,20,980,0,"black");
     ecran->addLine(1000,20,980,40,"black");
     ecran->addLine(20,800,0,780,"black");
     ecran->addLine(20,800,40,780,"black");
-    std::cout <<"les optimum sont:"<<std::endl;
-    for(int l=0; l<solut_pareto.size(); l++)
+    // std::cout <<"les optimum sont:"<<std::endl;
+    for(int i=0; i<pareto_final.size(); i++)
     {
-        ecran->addDisk((solut_pareto[l].first*10)+20, (solut_pareto[l].second*10)+20, 5, "redball");
-       std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
+        ecran->addDisk((pareto_final[i].first.first)*10+20, (pareto_final[i].first.second)*10+20, 5, "redball");
+        //std::cout << pareto_final[i].first.first << " ; " << pareto_final[i].first.second << std::endl;
     }
 
     //std::cout <<"les NON optimum sont:"<<std::endl;
     for(int l=0; l<solut_pareto_nulles.size(); l++)
     {
-        ecran->addDisk((solut_pareto_nulles[l].first*10)+20, (solut_pareto_nulles[l].second*10)+20, 5, "blueball");
-       // std::cout << solut_pareto_nulles[l].first << " ; " << solut_pareto_nulles[l].second << std::endl;
+        ecran->addDisk((solut_pareto_nulles[l].first.first)*10+20, (solut_pareto_nulles[l].first.second)*10+20, 5, "blueball");
+        // std::cout << solut_pareto_nulles[l].first << " ; " << solut_pareto_nulles[l].second << std::endl;
     }
+
+
+    ////ensuite c'est l'affichage des graphes optimum////
+    for(int l=0; l<pareto_final.size(); l++)
+    {
+        //on affiche les deux pois + id du graphe
+        std::cout << pareto_final[l].first.first << " ; " << pareto_final[l].first.second << " som: " << pareto_final[l].second <<std::endl;
+        //on parcourt la ligne binaire
+        for(int y=0; y<combinaisons.size(); y++)
+        {
+            //si = 1 alors il y arete d'id Y
+            if(combinaisons[pareto_final[l].second][y] == 1)
+            {
+                //on match l'arete d'id Y
+                for(auto& elem : m_aretes)
+                {
+                    if(elem->getm_id_arete() == y)
+                    {
+                        //on la mark
+                        elem->setMark(true);
+                    }
+                }
+            }
+        }
+
+        std::vector<Arete*> arete_pris;
+        //on parcourt arete et si true alors on l'affiche
+        for(auto& elem : m_aretes)
+        {
+            if(elem->getMark()==true)
+            {
+                //std::cout << elem->getm_aretes() << std::endl;
+                arete_pris.push_back(elem);
+            }
+            //affichage des sommets
+            for (const auto& elem : m_sommets)
+                //permettre d'afficher les données des sommets
+            {
+                ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "redball");
+            }
+            system("pause");
+            double x1=0, x2=0, y1=0, y2=0;
+            for (int i=0; i<arete_pris.size(); i++)
+                //affiche les aretes entre le sommets
+            {
+                int d=0,n=0;//compteur
+                //elem->getm_id_arete;
+                for (const auto& elem2 : m_sommets)
+                {
+
+                    if (arete_pris[i]->getm_sommet_x()==elem2.second->getm_id())
+                    {
+                       // d=d+250;
+                       // n=n+250;
+                        //on recup les coord du sommet1
+                        x1=elem2.second->getm_x();
+                        y1=elem2.second->getm_y();
+                    }
+                    if (arete_pris[i]->getm_sommet_y()==elem2.second->getm_id())
+                    {
+
+                        //n=n+250;
+                        //on recup les coord du sommet2
+                        x2=elem2.second->getm_x();
+                        y2=elem2.second->getm_y();
+                    }
+                }
+                ecran->addLine(x1,y1,x2,y2, "black");
+
+                //affichage des poids des arêtes qu'on garde ! faire attention sur ce point
+                double x_moy=(x1+x2)/2-20;
+                double y_moy =(y1+y2)/2;
+                //affichage des poids
+                float p1;
+                float p2;
+                int poids_tot1=0;
+                int poids_tot2=0;
+                p1=arete_pris[i]->getPoids(0);
+                poids_tot1=poids_tot1+p1;
+                p2=arete_pris[i]->getPoids(1);
+                poids_tot2=poids_tot2+p2;
+                std::string p1_next;
+                std::string p2_next;
+                //choisir 1 chiffre après la virgule de notre float poids1, poids2
+                p1_next = std::to_string(p1);
+                p1_next=p1_next.substr(0,3);
+                p2_next = std::to_string(p2);
+                p2_next= p2_next.substr(0,3);
+                //détermination et plaçace des poids sur la graphe de dépar
+                ecran->addText(x_moy,y_moy,p1_next+";"+p2_next,"green");
+
+                /* //affichage des sommets
+                 for (const auto& elem : m_sommets)
+                     //permettre d'afficher les données des sommets
+                 {
+                     ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "redball");
+                 }*/
+            }
+           // ecran->addDisk(500,500,1000,"white");
+        }
+
+    }
+
+    //som =reference
+
+    //affichage des graphes
+    /*std::vector<Arete*> arete_pris;
+    //on parcourt arete et si true alors on l'affiche
+    for(auto& elem : m_aretes)
+    {
+        if(elem->getMark()==true)
+        {
+            //std::cout << elem->getm_aretes() << std::endl;
+            arete_pris.push_back(elem);
+        }
+        system("pause");
+    double x1=0, x2=0, y1=0, y2=0;
+    for (int i=0; i<arete_pris.size(); i++)
+        //affiche les aretes entre le sommets
+    {
+        //elem->getm_id_arete;
+        for (const auto& elem2 : m_sommets)
+        {
+            if (arete_pris[i]->getm_sommet_x()==elem2.second->getm_id())
+            {
+                //on recup les coord du sommet1
+                x1=elem2.second->getm_x();
+                y1=elem2.second->getm_y();
+            }
+            if (arete_pris[i]->getm_sommet_y()==elem2.second->getm_id())
+            {
+                //on recup les coord du sommet2
+                x2=elem2.second->getm_x();
+                y2=elem2.second->getm_y();
+            }
+        }
+        ecran->addLine(x1,y1,x2,y2, "black");
+
+        //affichage des poids des arêtes qu'on garde ! faire attention sur ce point
+        double x_moy=(x1+x2)/2-20;
+        double y_moy =(y1+y2)/2;
+        //affichage des poids
+        float p1;
+        float p2;
+        int poids_tot1=0;
+        int poids_tot2=0;
+        p1=arete_pris[i]->getPoids(0);
+        poids_tot1=poids_tot1+p1;
+        p2=arete_pris[i]->getPoids(1);
+        poids_tot2=poids_tot2+p2;
+        std::string p1_next;
+        std::string p2_next;
+        //choisir 1 chiffre après la virgule de notre float poids1, poids2
+        p1_next = std::to_string(p1);
+        p1_next=p1_next.substr(0,3);
+        p2_next = std::to_string(p2);
+        p2_next= p2_next.substr(0,3);
+        //détermination et plaçace des poids sur la graphe de dépar
+        ecran->addText(x_moy,y_moy,p1_next+";"+p2_next,"green");
+
+        //affichage des sommets
+        for (const auto& elem : m_sommets)
+            //permettre d'afficher les données des sommets
+        {
+            ecran->addDisk(elem.second->getm_x(), elem.second->getm_y(), 20, "redball");
+        }
+    }
+    }*/
+
+ /*   void Graphe::dijkstra(int start, int idSommetArrive)
+{
+    std::unordered_map<Arete *, float > distance;
+    std::unordered_map< Sommet *, Sommet * > chemin;
+    m_sommets.find(start)->second->setMark(true);
+    Sommet * sommet_actuel = m_sommets.find(start)->second;
+    int a, h=0;
+    int tab[1];
+    float poids= 0;
+    bool centraleTrouver = false;
+
+    for(auto& elem: m_sommets){ //on parcourt les sommets
+      elem.second->setMark(false);
+    }
+
+    do
+    {
+        for(auto& elem1 : m_aretes)
+        {
+            if(elem1->getm_sommet_x() == sommet_actuel->getm_id() || elem1->getm_sommet_y() == sommet_actuel->getm_id()) /// cette arr�tes poss�de sommet_actuel en tant que sommet initiale
+            {
+                if(elem1->getm_sommet_x() == sommet_actuel->getm_id()){
+                  a = 1;
+                }else if(elem1->getm_sommet_y() == sommet_actuel->getm_id()){
+                  a = 2;
+                }
+
+                for(auto& elem2: m_sommets){ //on parcourt les sommets
+                if(a==1){
+                  if(elem2.second->getm_id() == elem1->getm_sommet_x()){
+                    if (!elem2.second->getMark())
+                    {
+                        bool voisin_vu = false;
+                        ///v�rifier si elle a �t� vu ou pas
+                        for (auto &elem2 : distance)
+                        {
+                            if(elem2.first->voisinIdentique(elem1->donnerVoisin(sommet_actuel))) ///voisin d�j� vu
+                            {
+                                voisin_vu = true;
+                                if(elem2.second > elem1->getPoids() + poids)
+                                {
+                                    distance.insert({elem1, elem1->getPoids() + poids});
+                                    //distance.erase(elem.first);
+                                }
+                            }
+                        }
+                        if (!voisin_vu) ///si le voisin n'a jamais �t� vu
+                        {
+                            distance.insert({elem1, elem1->getPoids() + poids});
+
+                        }
+                    }
+                  }
+                }else if(a==2){
+                  if(elem2->getm_id() == elem1->getm_sommet_y()){
+                    if (!elem1->sommetsIncMarked())
+                    {
+                        bool voisin_vu = false;
+                        ///v�rifier si elle a �t� vu ou pas
+                        for (auto &elem : distance)
+                        {
+                            if(elem.first->voisinIdentique(elem1->donnerVoisin(sommet_actuel))) ///voisin d�j� vu
+                            {
+                                voisin_vu = true;
+                                if (elem.second > elem1->getPoids() + poids)
+                                {
+                                    distance.insert({elem1, elem1->getPoids() + poids});
+                                    //distance.erase(elem.first);
+                                }
+                            }
+                        }
+                        if (!voisin_vu) ///si le voisin n'a jamais �t� vu
+                        {
+                            distance.insert({elem1, elem1->getPoids() + poids});
+
+                        }
+                    }
+                  }
+                }
+                }
+                ///
+            }
+        }
+        bool debut = true;
+        Arete * cetArete;
+        for (auto &elem : distance)
+        {
+            if (debut)
+            {
+                cetArete = elem.first;
+                sommet_actuel = elem.first->donnerVoisin(); ///on aurait pu faire une boucle for des sommets total et cherher le sommet identique au sommet de d�part de l'arete et faire donnerVoisin(sommet)
+                poids = elem.second;
+                debut = false;
+            }
+            if (!debut && elem.second <= poids)
+            {
+                cetArete = elem.first;
+                sommet_actuel = elem.first->donnerVoisin();
+                poids = elem.second;
+            }
+        }
+        ///sommet actuelle choisi, poids actualis�
+        chemin.insert({cetArete->donnerVoisin(),cetArete->donnerInitiale()});
+        sommet_actuel->setMark(true);
+        distance.erase(cetArete);
+        if (sommet_actuel->getId() == idSommetArrive)
+        {
+            centraleTrouver = true;
+        }
+    }
+    while (!centraleTrouver);
+
+    ///affichage
+    for (size_t i = 0 ; i < m_aretes.size() ; i++)
+    {
+        if ( m_aretes[i]->cetArete(sommet_actuel,chemin.find(sommet_actuel)->second ))
+            m_aretes[i]->afficherAretes();
+    }
+    while(chemin.find(sommet_actuel)->second != m_sommets.find(start)->second)
+    {
+        sommet_actuel = chemin.find(sommet_actuel)->second;
+        for (size_t i = 0 ; i < m_aretes.size() ; i++)
+        {
+            if ( m_aretes[i]->cetArete(sommet_actuel,chemin.find(sommet_actuel)->second ))
+                m_aretes[i]->afficherAretes();
+        }
+    }
+
+}*/
+
+
 }
 Graphe::~Graphe() {}

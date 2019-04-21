@@ -31,6 +31,7 @@ void menu()
     do
     {
         choix=interface_principale();
+        system("cls");
         switch(choix)
         {
         case 1:
@@ -108,12 +109,12 @@ void menu()
             }
             break;
         }
-            case 3:
-                {
-                    system("cls");
-                    std::cout<<"Vous aviez choisi de faire un disjktra\n"<<std::endl;
-                    break;
-                }
+        case 3:
+        {
+            system("cls");
+            std::cout<<"Vous aviez choisi de faire un disjktra\n"<<std::endl;
+            break;
+        }
         case 4:
         {
             system("cls");
@@ -208,12 +209,12 @@ int choix_kruskal_fonction()
 {
     int choix1;
     do
-            {
-                std::cout<<"Que souhaitez vous afficher?\n1. Graphe de départ\n2. Afficher Kruskal\n"<<std::endl;
-                std::cin>>choix1;
-            }
-            while (choix1<1 ||choix1>2);
-            return choix1;
+    {
+        std::cout<<"Que souhaitez vous afficher?\n1. Graphe de départ\n2. Afficher Kruskal\n"<<std::endl;
+        std::cin>>choix1;
+    }
+    while (choix1<1 ||choix1>2);
+    return choix1;
 }
 
 /**
@@ -229,10 +230,10 @@ int choix_pareto_fonction()
 {
     int choix1;
     do
-            {
-                std::cout<<"Que souhaitez vous afficher?\n1. Graphe de depart\n2. Afficher Pareto\n"<<std::endl;
-                std::cin>>choix1;
-            }
-            while (choix1<1 ||choix1>2);
-            return choix1;
+    {
+        std::cout<<"Que souhaitez vous afficher?\n1. Graphe de depart\n2. Afficher Pareto\n"<<std::endl;
+        std::cin>>choix1;
+    }
+    while (choix1<1 ||choix1>2);
+    return choix1;
 }
