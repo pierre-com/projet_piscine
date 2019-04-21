@@ -6,17 +6,17 @@
 
 int main()
 {
-    //menu();
+    menu();
 
-    Svgfile svgout;
-  Graphe a("cubetown.txt");
-  a.ponderation("cubetown_weights_0.txt");
-  a.affichage(&svgout);
-  int choix=1;
+   /* Svgfile svgout;
+    Graphe a("cubetown.txt");
+    a.ponderation("cubetown_weights_0.txt");
+    a.affichage(&svgout);
+    int choix=1;
+    //a.kruskal(choix);
+    a.pareto();*/
 
-  //a.kruskal(choix);
-  a.pareto();
-  return 0;
+    return 0;
 }
 
 

@@ -10,6 +10,4 @@ int choix_kruskal_fonction();
 int choix_pareto_fonction();
 
 
-
-
 #endif // MENU_H_INCLUDED

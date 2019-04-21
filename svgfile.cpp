@@ -2,6 +2,15 @@
 #include <iostream>
 #include <sstream>
 
+/**
+ * \file          graphe.cpp
+ * \author        TD2 groupe 6
+ * \date          21/04/2019
+ * \brief         affichage des graphe sur output
+ *
+ * \details    code fourni par l etablissement lors du remdu du projet du semestre 1. permet de tracer des lignes, faire apparaitre des cercles et l ecriture des textes
+*/
+
 const std::string svgHeader =
     "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
     "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" ";
@@ -13,6 +22,17 @@ extern const std::string svgBallGradients;
 
 std::set<std::string> Svgfile::s_openfiles;
 
+
+
+/**
+ * \brief       creation de la page SVG output
+ * \details     mise en place
+ *
+ * \param     pas de parametre
+ * \param     pas de parametre
+ * \param     pas de parametre
+ *
+ */
 Svgfile::Svgfile(std::string _filename, int _width, int _height) :
     m_filename{_filename}, m_width{_width}, m_height{_height}
 {

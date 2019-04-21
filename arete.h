@@ -15,8 +15,6 @@ public:
     int getm_sommet_x();
     int getm_sommet_y();
     void setPoids(float poids, int choix);
-   // void setPoids1(float poids1);
-   //void setPoids2(float poids2);
     ~Arete();
 private:
     bool  m_marked;

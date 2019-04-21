@@ -4,6 +4,24 @@
 #include "graphe.h"
 #include <string>
 
+/**
+ * \file          graphe.cpp
+ * \author    TD2 groupe 6
+ * \date       21/04/2019
+ * \brief       interface sur la console
+ *
+ * \details    cette partie du code permet aux utilisateurs de choisir se qu'ils souhaite faire afficher sur la console, sous forme d'interface intéractive
+*/
+
+
+/**
+ * \brief       interface principale entre l'utilisateur et la console
+ * \details     interface principale entre l'utilisateur et la console, permet aux personnes de faire leur choix pour l'execution d'une partie du code
+ *
+ * \param     on ne prend rien en paramètre
+ * \return    on ne return aucune donnee
+ *
+ */
 //affichage du menu
 void menu()
 {
@@ -78,8 +96,8 @@ void menu()
                 system("cls");
                 break;
             }
-            break;
             }
+            break;
         }
         case 3:
         {
@@ -94,7 +112,14 @@ void menu()
 }
 
 
-
+/**
+ * \brief       première interface avec l'utilisateur
+ * \details     l'utilisateur va pourvoir choisir de faire un kruskal, un pareto ou quitter l'application
+ *
+ * \param     on ne prend rien en paramètre
+ * \return    on  return le choix de l'utilisateur
+ *
+ */
 //interface de depart, choisir ce qu'on souhaite faire
 int interface_principale()
 {
@@ -109,6 +134,15 @@ int interface_principale()
     return choix;
 }
 
+
+/**
+ * \brief       choix du poids de Kruskal
+ * \details     l'utilisateur va pourvoir choisir de faire un kruskal, selon le poids de son choix
+ *
+ * \param     on ne prend rien en paramètre
+ * \return    on return le choix de l'utilisateur
+ *
+ */
 //choisir entre le poids 1 et 2 de kruskal
 int choix_kruskal()
 {
@@ -123,6 +157,17 @@ int choix_kruskal()
     return choix;
 }
 
+
+/**
+ * \brief       saisir le nom du graphe et le poids qu'on souhaite
+ * \details     l'utilisateur va pourvoir choisir de faire le graphe qu'il souhaite utiliser
+ *
+ * \param     std::string name_graphe       permet d'entrer le nom du gaphe avec les positions des sommets
+ * \param     std::string name_poids        permet d'entrer le nom du fichier poids des aretes
+ * \param     Svgfile *ecran3               permet de renvoyer sur le output le graphe
+ * \return    on ne return rien
+ *
+ */
 //récuperer les fichiers texte a lire
 void afficher_graphe(std::string name_graphe,std::string name_poids,Svgfile *ecran3)
 {
@@ -136,6 +181,14 @@ void afficher_graphe(std::string name_graphe,std::string name_poids,Svgfile *ecr
     std::cout<<"Affichage du graphe sur svgout reussi"<<std::endl;
 }
 
+/**
+ * \brief       choix de la fonction dans Kruskal
+ * \details     l'utilisateur va pourvoir choisir de faire un kruskal, ou d'fficher le graphe de depart
+ *
+ * \param     on ne prend rien en paramètre
+ * \return    on return le choix de l'utilisateur
+ *
+ */
 //faire le choix entre affichage di graphe de deparx VS graphe qui a subi kruskal
 int choix_kruskal_fonction()
 {
@@ -149,6 +202,14 @@ int choix_kruskal_fonction()
             return choix1;
 }
 
+/**
+ * \brief       choix de la fonction via pareto
+ * \details     l'utilisateur va pourvoir choisir de faire un pareto ou afficher le graphe de depart
+ *
+ * \param     on ne prend rien en paramètre
+ * \return    on return le choix de l'utilisateur
+ *
+ */
 //faire le choix entre affichage di graphe de deparx VS graphe qui a subi pareto
 int choix_pareto_fonction()
 {

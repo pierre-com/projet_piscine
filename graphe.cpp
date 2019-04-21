@@ -149,10 +149,10 @@ void Graphe::ponderation(std::string nomFichier_ponderation)
 
 
 /**
- * \brief       es aretes
- * \details    récupérer les donnees du fichier texte avec les poids des aretes, par rapport au identifiants des arete, on va attribuer les valeurs de poids des aretes dans le vecteur poids
+ * \brief       affichage du graphe original
+ * \details     suite a la prise des données du fichier texte, nous allons afficher sur le svgout le graphe demander par l'utilisateur
  *
- * \param    std::string nomFichier_ponderation          c'est une chaine de caractere qui permet aux utilisateurs d'entree et d acceder aux donnees du fichier texte poids des aretes
+ * \param    Svgfile *ecran         création d'un écran pour pouvoir illustrer notre graphe sur un output
  * \return    on ne return aucune donnee
  *
  */
@@ -206,7 +206,18 @@ void Graphe::affichage(Svgfile *ecran)
 
 }
 
-
+/**
+ * \brief       faire un kruskal sur le graphe et afficher le graphe sur le svgout
+ * \details     parcourir les identifiants d'arete et regarder le poids contenu par l'arete pour savoir si pour classer par poids croissant (du plus petit au plus grands)
+ *              regarder les sommets qui constituent l'arete, voir si l'identifiants des aretes pris sont les mêmes
+ *              si l'identiiant des sommets sont les mêmes alors on ne prend pas l'arete sinon on le prend
+ *              affichage du resultat de Kruskal sur le svgout
+ *
+ * \param    int choix         pouvoir choisir entre le poids 1 ou le poids 2 du vecteur de poids
+ * \param    Svgfile *ecran2         création d'un écran pour pouvoir illustrer notre graphe sur un output
+ * \return    on ne return aucune donnee
+ *
+ */
 void Graphe::kruskal(int choix, Svgfile *ecran2)
 {
     int allLinked=0;
@@ -402,6 +413,14 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
     //ecran2->addText(50,50,"coucou"+" salut","green");
 }
 
+/**
+ * \brief       faire un pareto sur le graphe
+ * \details     ??
+ *
+ * \param    ??
+ * \return    on ne return aucune donnee
+ *
+ */
 void Graphe::pareto()
 {
     int c; // c= 2^n
