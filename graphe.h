@@ -16,7 +16,7 @@ class Graphe
   void kruskal(int choix, Svgfile *ecran2);
   void kruskal(int choix);
   void affichage_kruskal(std::vector<Arete*> arete_pris,Svgfile &ecran);
-  void pareto();
+  void pareto(Svgfile *ecran);
   ~Graphe();
 
   private:

@@ -6,15 +6,15 @@
 
 int main()
 {
-    menu();
+    //menu();
 
-   /* Svgfile svgout;
-    Graphe a("cubetown.txt");
-    a.ponderation("cubetown_weights_0.txt");
-    a.affichage(&svgout);
+    Svgfile svgout;
+    Graphe a("triville.txt");
+    a.ponderation("triville_weights_0.txt");
+    //a.affichage(&svgout);
     int choix=1;
     //a.kruskal(choix);
-    a.pareto();*/
+    a.pareto(&svgout);
 
     return 0;
 }

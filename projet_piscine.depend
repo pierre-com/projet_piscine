@@ -127,7 +127,7 @@
 	<iostream>
 	<vector>
 
-1555844478 source:c:\users\admin\projet_piscine\graphe.cpp
+1555869516 source:c:\users\admin\projet_piscine\graphe.cpp
 	"graphe.h"
 	"svgfile.h"
 	<iostream>
@@ -138,8 +138,9 @@
 	<stdio.h>
 	<tgmath.h>
 	<utility>
+	<algorithm>
 
-1555776095 c:\users\admin\projet_piscine\graphe.h
+1555864725 c:\users\admin\projet_piscine\graphe.h
 	"sommet.h"
 	"arete.h"
 	<string>
@@ -155,7 +156,7 @@
 	<fstream>
 	<set>
 
-1555844507 source:c:\users\admin\projet_piscine\main.cpp
+1555869516 source:c:\users\admin\projet_piscine\main.cpp
 	<iostream>
 	"svgfile.h"
 	"graphe.h"

@@ -341,11 +341,11 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
     }
 
     //vérification des aretes qu'on push
-    std::cout<<"ok1"<<std::endl;
+   /* std::cout<<"ok1"<<std::endl;
     for(int i=0; i<arete_pris.size(); i++)
     {
         std::cout<<arete_pris[i]->getm_id_arete()<<std::endl;
-    }
+    }*/
     //affichage de Kruskal
     //affichage des arêtes
 
@@ -423,7 +423,7 @@ void Graphe::kruskal(int choix, Svgfile *ecran2)
  *
  */
 
-void Graphe::pareto()
+void Graphe::pareto(Svgfile *ecran)
 {
     int c; // c= 2^n
     int pb=1; // pb représente le n de 2^n
@@ -565,8 +565,8 @@ void Graphe::pareto()
         else
         {
             /////LES SOLUTIONS //////////
-            std::cout << f << std::endl;
-            std::cout << "Graphe connexe" << std::endl;
+            //std::cout << f << std::endl;
+            //std::cout << "Graphe connexe" << std::endl;
             float sommePoids1=0;
             float sommePoids2=0;
             for(auto& elem2 : m_aretes)
@@ -581,25 +581,25 @@ void Graphe::pareto()
             poids_graphe.first=sommePoids1;
             poids_graphe.second=sommePoids2;
             solut_pareto.push_back(poids_graphe);
-            std::cout << sommePoids1 << std::endl;
-            std::cout << sommePoids2 << std::endl;
+           // std::cout << sommePoids1 << std::endl;
+            //std::cout << sommePoids2 << std::endl;
         }
 
         //Vide le arete_existe
         arete_exist.clear();
-        std::cout<< std::endl;
+        //std::cout<< std::endl;
     }
 
-    std::cout << "le nb de solution est:" << std::endl;
-    std::cout << solut_pareto.size() << std::endl;
+   // std::cout << "le nb de solution est:" << std::endl;
+   // std::cout << solut_pareto.size() << std::endl;
     ///////////////////TRI des solution de pareto//////////////
     //std::vector< std::pair<float,float> > solut_pareto_optimum;
     std::vector< std::pair<float,float> > solut_pareto_nulles;
     sort(solut_pareto.begin(), solut_pareto.end());
-    for(int l=0; l<solut_pareto.size(); l++)
+    /*for(int l=0; l<solut_pareto.size(); l++)
     {
         std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
-    }
+    }*/
     ///supprime tout ceux qui sont plus grand que p1 et P2
     for(int i=0 ; i<solut_pareto.size() ; i++)
     {
@@ -612,16 +612,32 @@ void Graphe::pareto()
             }
         }
     }
-    std::cout <<"les optimum sont:"<<std::endl;
-    for(int l=0; l<solut_pareto.size(); l++)
-    {
-        std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
-    }
+
 
     /////////////////AFFICHAGE//////////////////////
-
     // Dans solut_pareto se trouve les points optimum et dans solut_pareto_nulles se trouves les autres solutions
+    //std::vector< std::pair<float,float> > solut_pareto;
+    //std::vector< std::pair<float,float> > solut_pareto_nulles;
+    //affichage des axes
+    ecran->addLine(20,20,1000,20,"black");
+    ecran->addLine(20,20,20,800,"black");
+    ecran->addLine(1000,20,980,0,"black");
+    ecran->addLine(1000,20,980,40,"black");
+    ecran->addLine(20,800,0,780,"black");
+    ecran->addLine(20,800,40,780,"black");
+    //std::cout <<"les optimum sont:"<<std::endl;
+    for(int l=0; l<solut_pareto.size(); l++)
+    {
+        ecran->addDisk((solut_pareto[l].first*10)+5, (solut_pareto[l].second*10)+5, 5, "redball");
+       // std::cout << solut_pareto[l].first << " ; " << solut_pareto[l].second << std::endl;
+    }
 
+    //std::cout <<"les NON optimum sont:"<<std::endl;
+    for(int l=0; l<solut_pareto_nulles.size(); l++)
+    {
+        ecran->addDisk((solut_pareto_nulles[l].first*10)+5, (solut_pareto_nulles[l].second*10)+5, 5, "blueball");
+       // std::cout << solut_pareto_nulles[l].first << " ; " << solut_pareto_nulles[l].second << std::endl;
+    }
 
 
 
